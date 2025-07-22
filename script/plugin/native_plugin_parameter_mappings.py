@@ -28,7 +28,9 @@ native_parameter_regions = {
 native_plugin_parameter_mappings = {
     "Sampler": [
         PluginParameter(
-            index=ChannelParameter.FilterCutoff.value, name="Filter Cutoff", parameter_type=PluginParameterType.Channel
+            index=ChannelParameter.FilterCutoff.value,
+            name="Filter Cutoff",
+            parameter_type=PluginParameterType.Channel
         ),
         PluginParameter(
             index=ChannelParameter.FilterResonance.value,
@@ -114,14 +116,14 @@ native_plugin_parameter_mappings = {
         ),
     ],
     "FLEX": [
-        PluginParameter(index=10),
-        PluginParameter(index=11),
-        PluginParameter(index=12),
-        PluginParameter(index=13),
-        PluginParameter(index=14),
-        PluginParameter(index=15),
-        PluginParameter(index=16),
-        PluginParameter(index=17),
+        PluginParameter(index=10, name="Macro 1"),
+        PluginParameter(index=11, name="Macro 2"),
+        PluginParameter(index=12, name="Macro 3"),
+        PluginParameter(index=13, name="Macro 4"),
+        PluginParameter(index=14, name="Macro 5"),
+        PluginParameter(index=15, name="Macro 6"),
+        PluginParameter(index=16, name="Macro 7"),
+        PluginParameter(index=17, name="Macro 8"),
     ],
     "Harmless": [
         PluginParameter(index=31, name="Pluck"),
