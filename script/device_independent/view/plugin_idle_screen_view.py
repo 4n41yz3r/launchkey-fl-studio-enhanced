@@ -44,8 +44,11 @@ class PluginIdleScreenView(View):
         elif len(words) == 2:
             first_word, second_word = words[0], words[1]
             
+            # Special case for "Macro" - always abbreviated to "M"
+            if first_word == "Macro":
+                return "M" + second_word[:3]
             # Check if first word is special and should only contribute 1 character
-            if first_word in special_first_words:
+            elif first_word in special_first_words:
                 # For special words, take 1 char from first + up to 3 from second
                 if len(second_word) == 1:
                     # Special case: "Filter 1" -> "Fil1"
@@ -62,12 +65,5 @@ class PluginIdleScreenView(View):
                     # Take first 2 characters of each word
                     return first_word[:2] + second_word[:2]
         else:
-            # More than 2 words
-            if words[0] in special_first_words:
-                # Take 1 char from first word + 1 char from next 3 words
-                result = words[0][0]
-                result += "".join(word[0] for word in words[1:4] if word)
-                return result
-            else:
-                # Take first character of each word up to 4 total
-                return "".join(word[0] for word in words[:4] if word)
+            # More than 2 words: take first character of each word up to 4 total
+            return "".join(word[0] for word in words[:4] if word)
