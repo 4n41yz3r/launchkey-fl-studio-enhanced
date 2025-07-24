@@ -7,7 +7,6 @@ from script.device_independent.view import (
     ChannelRackVolumePreviewView,
     ChannelRackVolumeScreenView,
     ChannelRackVolumeView,
-    FLStudioTextView,
     MixerIdleScreenView,
     MixerPanPreviewView,
     MixerPanScreenView,
@@ -45,7 +44,6 @@ class MixerEncoderLayoutManager(PagedLayoutManager):
                 notification_primary="Mixer",
                 notification_secondary="Channel Volume",
                 views=[
-                    FLStudioTextView(screen_writer, action_dispatcher),
                     MixerIdleScreenView(action_dispatcher, fl, screen_writer, "Channel Volume"),
                     ChannelRackVolumeView(action_dispatcher, fl, model, control_to_index=control_to_index),
                     ChannelRackVolumeScreenView(action_dispatcher, screen_writer, fl),
@@ -59,7 +57,6 @@ class MixerEncoderLayoutManager(PagedLayoutManager):
                 notification_primary="Mixer",
                 notification_secondary="Channel Pan",
                 views=[
-                    FLStudioTextView(screen_writer, action_dispatcher),
                     MixerIdleScreenView(action_dispatcher, fl, screen_writer, "Channel Pan"),
                     ChannelRackPanView(action_dispatcher, fl, model, control_to_index=control_to_index),
                     ChannelRackPanScreenView(action_dispatcher, screen_writer, fl),
@@ -73,7 +70,6 @@ class MixerEncoderLayoutManager(PagedLayoutManager):
                 notification_primary="Mixer",
                 notification_secondary="Mixer Volume",
                 views=[
-                    FLStudioTextView(screen_writer, action_dispatcher),
                     MixerIdleScreenView(action_dispatcher, fl, screen_writer, "Volume"),
                     MixerVolumeView(action_dispatcher, fl, model, control_to_index=control_to_index),
                     MixerVolumeScreenView(action_dispatcher, screen_writer, fl),
@@ -85,7 +81,6 @@ class MixerEncoderLayoutManager(PagedLayoutManager):
                 notification_primary="Mixer",
                 notification_secondary="Mixer Pan",
                 views=[
-                    FLStudioTextView(screen_writer, action_dispatcher),
                     MixerIdleScreenView(action_dispatcher, fl, screen_writer, "Pan"),
                     MixerPanView(action_dispatcher, fl, model, control_to_index=control_to_index),
                     MixerPanScreenView(action_dispatcher, screen_writer, fl),
@@ -97,7 +92,6 @@ class MixerEncoderLayoutManager(PagedLayoutManager):
                 notification_primary="Mixer",
                 notification_secondary="Mixer EQ",
                 views=[
-                    FLStudioTextView(screen_writer, action_dispatcher),
                     MixerIdleScreenView(action_dispatcher, fl, screen_writer, "EQ"),
                     MixerTrackEqView(action_dispatcher, fl, control_to_index=control_to_index),
                     MixerTrackEqScreenView(action_dispatcher, screen_writer, fl),
