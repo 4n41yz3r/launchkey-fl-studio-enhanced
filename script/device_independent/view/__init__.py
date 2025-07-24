@@ -38,6 +38,7 @@ from .mixer_bank_button_view import MixerBankButtonView
 from .mixer_bank_highlight_view import MixerBankHighlightView
 from .mixer_bank_screen_view import MixerBankScreenView
 from .mixer_bank_view import MixerBankView
+from .mixer_idle_screen_view import MixerIdleScreenView
 from .mixer_master_volume_view import MixerMasterVolumeView
 from .mixer_mute_select_screen_view import MixerMuteSelectScreenView
 from .mixer_mute_view import MixerMuteView
@@ -77,6 +78,7 @@ from .quantise_button_view import QuantiseButtonView
 from .redo_button_view import RedoButtonView
 from .scale_model_controller import ScaleModelController
 from .select_new_pattern_view import SelectNewPatternView
+from .sends_idle_screen_view import SendsIdleScreenView
 from .sequencer_pad_display_view import SequencerPadDisplayView
 from .sequencer_page_reset_controller import SequencerPageResetController
 from .sequencer_page_view import SequencerPageView
@@ -154,6 +156,7 @@ __all__ = [
     "MixerBankHighlightView",
     "MixerBankScreenView",
     "MixerBankView",
+    "MixerIdleScreenView",
     "MixerMasterVolumeView",
     "MixerMuteSelectScreenView",
     "MixerMuteView",
@@ -193,6 +196,7 @@ __all__ = [
     "RedoButtonView",
     "ScaleModelController",
     "SelectNewPatternView",
+    "SendsIdleScreenView",
     "SequencerPadDisplayView",
     "SequencerPageResetController",
     "SequencerPageView",

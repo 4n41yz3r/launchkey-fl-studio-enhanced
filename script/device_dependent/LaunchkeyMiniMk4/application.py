@@ -132,7 +132,7 @@ class Application:
             )
         if layout == self.product_defs.EncoderLayout.Sends:
             return SendsEncoderLayoutManager(
-                self.action_dispatcher, self.screen_writer, self.device_manager, self.product_defs
+                self.action_dispatcher, self.fl, self.screen_writer, self.device_manager, self.product_defs
             )
         if layout == self.product_defs.EncoderLayout.Transport:
             return TransportEncoderLayoutManager(

@@ -148,7 +148,7 @@ class LaunchkeyMk4RangeScreenWriter:
         if fields is None:
             # Do not allow empty text to be displayed on the permanent display, its not allowed on LK4.
             if not text:
-                self._update_display(self.product_defs.DisplayAddress.Permanent.value, "", "FL Studio", "Milos")
+                self._update_display(self.product_defs.DisplayAddress.Permanent.value, "", "-")
             else:
                 self._update_display(self.product_defs.DisplayAddress.Permanent.value, "", text, "")
         elif isinstance(fields, str):

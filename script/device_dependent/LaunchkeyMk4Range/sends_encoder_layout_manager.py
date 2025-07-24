@@ -1,9 +1,9 @@
 from script.constants import Encoders
-from script.device_independent.view import NotUsedPreviewView
+from script.device_independent.view import NotUsedPreviewView, SendsIdleScreenView
 
 
 class SendsEncoderLayoutManager:
-    def __init__(self, action_dispatcher, screen_writer, device_manager, product_defs):
+    def __init__(self, action_dispatcher, fl, screen_writer, device_manager, product_defs):
         self.device_manager = device_manager
         self.screen_writer = screen_writer
         encoders = {
@@ -12,7 +12,7 @@ class SendsEncoderLayoutManager:
                 for index, encoder in enumerate(range(Encoders.Num.value))
             },
         }
-        self.views = [
+        self.views = [ SendsIdleScreenView(action_dispatcher, fl, screen_writer) ] + [
             NotUsedPreviewView(action_dispatcher, product_defs, screen_writer, control_index=encoders[index])
             for index in range(Encoders.Num.value)
         ]
