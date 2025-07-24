@@ -1,6 +1,7 @@
 from script.constants import Encoders
 from script.device_independent.view import (
     FLStudioTextView,
+    PluginIdleScreenView,
     PluginParameterPreviewView,
     PluginParameterScreenView,
     PluginParameterView,
@@ -16,6 +17,7 @@ class PluginEncoderLayoutManager:
         control_to_index = make_control_to_index(Encoders.FirstControlIndex.value, Encoders.Num.value)
         self.views = [
             FLStudioTextView(screen_writer, action_dispatcher),
+            PluginIdleScreenView(action_dispatcher, fl, screen_writer, plugin_parameter_mappings),
             PluginParameterView(action_dispatcher, fl, plugin_parameter_mappings, control_to_index=control_to_index),
             PluginParameterScreenView(
                 action_dispatcher, fl, screen_writer, plugin_parameter_mappings, control_to_index=control_to_index
