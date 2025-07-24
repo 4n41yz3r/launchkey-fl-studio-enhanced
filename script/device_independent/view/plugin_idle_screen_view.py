@@ -7,19 +7,26 @@ class PluginIdleScreenView(View):
         self.fl = fl
         self.screen_writer = screen_writer
         self.plugin_parameters = plugin_parameters
+        self.plugin = None
         self._refresh_plugin_names()
 
-    def handle_ChannelSelectAction(self, action):
+    def handle_OnRefreshAction(self, action):
         self._refresh_plugin_names()
-        self._on_show()
 
     def _refresh_plugin_names(self):
-        self.plugin = self.fl.get_selected_plugin()
+        current_plugin = self.fl.get_selected_plugin()
+        
+        if self.plugin == current_plugin:
+            return
+            
+        self.plugin = current_plugin
         if self.plugin_parameters and self.plugin in self.plugin_parameters:
             parameters = self.plugin_parameters[self.plugin]
             self.names = tuple(self._to_short_name(getattr(param, 'name', str(param))) for param in parameters) if parameters else None
         else:
             self.names = None
+        
+        self._on_show()
 
     def _on_show(self):
         if (self.plugin and self.names):
@@ -36,7 +43,7 @@ class PluginIdleScreenView(View):
             return ""
         
         words = name.split()
-        special_first_words = {"Filter", "Gate", "Sample", "LFO", "Master", "Osc"}
+        special_first_words = {"Filter", "Gate", "Sample", "LFO", "Master", "Osc", "Unison", "303", "VCF", "Grain", "Wave"}
 
         if len(words) == 1:
             # Single word: take first 4 characters
@@ -49,21 +56,14 @@ class PluginIdleScreenView(View):
                 return "M" + second_word[:3]
             # Check if first word is special and should only contribute 1 character
             elif first_word in special_first_words:
-                # For special words, take 1 char from first + up to 3 from second
-                if len(second_word) == 1:
-                    # Special case: "Filter 1" -> "Fil1"
-                    return first_word[:3] + second_word
-                else:
-                    # Normal case: "Filter Cutoff" -> "FCut"
-                    return first_word[0] + second_word[:3]
+                return first_word[0] + second_word[:3]
+            # Check if second word is single character
+            elif len(second_word) == 1:
+                # Take first 3 letters of first word + the character
+                return first_word[:3] + second_word
             else:
-                # Check if second word is single character
-                if len(second_word) == 1:
-                    # Take first 3 letters of first word + the character
-                    return first_word[:3] + second_word
-                else:
-                    # Take first 2 characters of each word
-                    return first_word[:2] + second_word[:2]
+                # Take first 2 characters of each word
+                return first_word[:2] + second_word[:2]
         else:
             # More than 2 words: take first character of each word up to 4 total
             return "".join(word[0] for word in words[:4] if word)
