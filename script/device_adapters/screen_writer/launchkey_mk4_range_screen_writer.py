@@ -150,6 +150,8 @@ class LaunchkeyMk4RangeScreenWriter:
             if not text:
                 text = "FL Studio"
             self._update_display(self.product_defs.DisplayAddress.Permanent.value, "", text, "")
+        elif isinstance(fields, str):
+            self._update_display(self.product_defs.DisplayAddress.Permanent.value, "", text, fields)
         else:
             self._update_display_grid(self.product_defs.DisplayAddress.Permanent.value, text, fields)
 

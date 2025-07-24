@@ -7,7 +7,7 @@ class FLStudioTextView(View):
         self.screen_writer = screen_writer
 
     def _on_show(self):
-        self.screen_writer.display_idle("FL Studio")
+        self.screen_writer.display_idle("FL Studio", "Milos")
 
     def _on_hide(self):
         self.screen_writer.display_idle("")
