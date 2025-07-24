@@ -168,7 +168,7 @@ class Application:
     def _create_encoder_layout_manager(self, layout):
         if layout == self.product_defs.EncoderLayout.Plugin:
             return PluginEncoderLayoutManager(
-                self.action_dispatcher, self.fl, self.product_defs, self.screen_writer, self.device_manager
+                self.action_dispatcher, self.fl, self.product_defs, self.screen_writer, self.button_led_writer, self.device_manager
             )
         if layout == self.product_defs.EncoderLayout.Mixer:
             return MixerEncoderLayoutManager(

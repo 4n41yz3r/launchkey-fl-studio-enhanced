@@ -152,6 +152,8 @@ FunctionToButton = {
     "ToggleArmMute_7": Button.Fader_7,
     "ToggleArmMute_8": Button.Fader_8,
     "ArmSelect": Button.ArmSelect,
+    "SelectNextPluginEncoderPage": Button.EncoderPageUp,
+    "SelectPreviousPluginEncoderPage": Button.EncoderPageDown,
 }
 
 ButtonToLedIndex = {

@@ -124,6 +124,7 @@ native_plugin_parameter_mappings = {
         PluginParameter(index=15, name="Macro 6"),
         PluginParameter(index=16, name="Macro 7"),
         PluginParameter(index=17, name="Macro 8"),
+        PluginParameter(index=18, name="Macro 9"),
     ],
     "Harmless": [
         PluginParameter(index=31, name="Pluck"),

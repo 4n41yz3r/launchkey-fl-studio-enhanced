@@ -94,6 +94,8 @@ FunctionToButton = {
     "DumpScoreLog": Button.TransportRecordShift,
     "SelectNextMixerEncoderMode": Button.EncoderPageUp,
     "SelectPreviousMixerEncoderMode": Button.EncoderPageDown,
+    "SelectNextPluginEncoderPage": Button.EncoderPageUp,
+    "SelectPreviousPluginEncoderPage": Button.EncoderPageDown,
 }
 
 ButtonToLedIndex = {
