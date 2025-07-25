@@ -28,26 +28,29 @@ class PluginIdleScreenView(View):
 
     def _refresh_plugin_names(self):
         current_plugin = self.fl.get_selected_plugin()
-        
         if self.plugin == current_plugin:
             return
             
         self.plugin = current_plugin
-        if self.plugin_parameters and self.plugin in self.plugin_parameters:
-            parameters = self.plugin_parameters[self.plugin]
-            if parameters:
-                # Calculate page boundaries (page size = 8)
-                page_size = 8
-                start_index = self.parameter_page * page_size
-                end_index = start_index + page_size
-                
-                # Get parameters for this page
-                page_parameters = parameters[start_index:end_index]
-                self.names = tuple(self._to_short_name(getattr(param, 'name', str(param))) for param in page_parameters) if page_parameters else None
-            else:
-                self.names = None
-        else:
-            self.names = None
+        page_parameters = self._get_page_parameters()
+        self.names = tuple(self._to_short_name(getattr(param, 'name', str(param))) for param in page_parameters) if page_parameters else None
+
+    def _get_page_parameters(self):
+        """Get parameters for the current page."""
+        if not self.plugin_parameters or self.plugin not in self.plugin_parameters:
+            return []
+        
+        parameters = self.plugin_parameters[self.plugin]
+        if not parameters:
+            return []
+        
+        # Calculate page boundaries (page size = 8)
+        page_size = 8
+        start_index = self.parameter_page * page_size
+        end_index = start_index + page_size
+        
+        # Get parameters for this page
+        return parameters[start_index:end_index]
 
     def _to_short_name(self, name):
         """Truncate parameter name to 4 characters using smart rules."""
