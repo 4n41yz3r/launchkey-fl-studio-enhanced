@@ -10,11 +10,12 @@ class PluginParameterView(View):
     channel_selection_flags = RefreshFlags.ChannelSelection.value | RefreshFlags.ChannelGroup.value
     mixer_track_selection_flags = RefreshFlags.MixerSelection.value
 
-    def __init__(self, action_dispatcher, fl, plugin_parameters, *, control_to_index):
+    def __init__(self, action_dispatcher, fl, plugin_parameters, *, control_to_index, parameter_page=0):
         super().__init__(action_dispatcher)
         self.fl = fl
         self.plugin_parameters = plugin_parameters
         self.control_to_index = control_to_index
+        self.parameter_page = parameter_page
         self.parameters_for_index = []
         self.deadzone_for_index = []
         self.action_dispatcher = action_dispatcher
@@ -53,8 +54,8 @@ class PluginParameterView(View):
         self.control_change_rate_limiter.reset()
         plugin = self.fl.get_selected_plugin()
         if plugin in self.plugin_parameters:
-            parameters = self.plugin_parameters[plugin]
-            new_parameters_for_index = parameters[: len(self.control_to_index)]
+            page_parameters = self._get_page_parameters(plugin)
+            new_parameters_for_index = page_parameters[: len(self.control_to_index)]
             if self.parameters_for_index == new_parameters_for_index:
                 return
             self.parameters_for_index = new_parameters_for_index
@@ -122,3 +123,20 @@ class PluginParameterView(View):
         for parameter in self.parameters_for_index:
             if parameter is not None and parameter.parameter_type is PluginParameterType.Plugin:
                 self.fl.reset_parameter_pickup(parameter.index)
+
+    def _get_page_parameters(self, plugin):
+        """Get parameters for the current page."""
+        if not self.plugin_parameters or plugin not in self.plugin_parameters:
+            return []
+
+        parameters = self.plugin_parameters[plugin]
+        if not parameters:
+            return []
+        
+        # Calculate page boundaries (page size = 8)
+        page_size = 8
+        start_index = self.parameter_page * page_size
+        end_index = start_index + page_size
+        
+        # Get parameters for this page
+        return parameters[start_index:end_index]

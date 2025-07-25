@@ -26,9 +26,20 @@ class PluginEncoderLayoutManager(PagedLayoutManager):
                 notification_secondary="Page 1",
                 views=[
                     PluginIdleScreenView(action_dispatcher, fl, screen_writer, plugin_parameter_mappings, parameter_page=0),
-                    PluginParameterView(action_dispatcher, fl, plugin_parameter_mappings, control_to_index=control_to_index),
+                    PluginParameterView(
+                        action_dispatcher,
+                        fl,
+                        plugin_parameter_mappings,
+                        control_to_index=control_to_index,
+                        parameter_page=0
+                    ),
                     PluginParameterScreenView(
-                        action_dispatcher, fl, screen_writer, plugin_parameter_mappings, control_to_index=control_to_index
+                        action_dispatcher,
+                        fl,
+                        screen_writer,
+                        plugin_parameter_mappings,
+                        control_to_index=control_to_index,
+                        parameter_page=0
                     ),
                     PluginParameterPreviewView(
                         action_dispatcher,
@@ -36,6 +47,7 @@ class PluginEncoderLayoutManager(PagedLayoutManager):
                         product_defs,
                         plugin_parameter_mappings,
                         control_to_index=control_to_index,
+                        parameter_page=0
                     )
                 ],
             ),
@@ -45,9 +57,20 @@ class PluginEncoderLayoutManager(PagedLayoutManager):
                 notification_secondary="Page 2",
                 views=[
                     PluginIdleScreenView(action_dispatcher, fl, screen_writer, plugin_parameter_mappings, parameter_page=1),
-                    PluginParameterView(action_dispatcher, fl, plugin_parameter_mappings, control_to_index=control_to_index),
+                    PluginParameterView(
+                        action_dispatcher,
+                        fl,
+                        plugin_parameter_mappings,
+                        control_to_index=control_to_index,
+                        parameter_page=1
+                    ),
                     PluginParameterScreenView(
-                        action_dispatcher, fl, screen_writer, plugin_parameter_mappings, control_to_index=control_to_index
+                        action_dispatcher,
+                        fl,
+                        screen_writer,
+                        plugin_parameter_mappings,
+                        control_to_index=control_to_index,
+                        parameter_page=1
                     ),
                     PluginParameterPreviewView(
                         action_dispatcher,
@@ -55,6 +78,7 @@ class PluginEncoderLayoutManager(PagedLayoutManager):
                         product_defs,
                         plugin_parameter_mappings,
                         control_to_index=control_to_index,
+                        parameter_page=1
                     )
                 ],
             )

@@ -5,13 +5,14 @@ from script.fl_constants import RefreshFlags
 
 
 class PluginParameterPreviewView(View):
-    def __init__(self, action_dispatcher, fl, product_defs, plugin_parameters, *, control_to_index):
+    def __init__(self, action_dispatcher, fl, product_defs, plugin_parameters, *, control_to_index, parameter_page=0):
         super().__init__(action_dispatcher)
         self.fl = fl
         self.product_defs = product_defs
         self.plugin_parameters = plugin_parameters
         self.control_to_index = control_to_index
         self.parameters_for_index = []
+        self.parameter_page = parameter_page
 
     def _on_show(self):
         self._update_previews()
@@ -40,7 +41,24 @@ class PluginParameterPreviewView(View):
     def _update_plugin_parameters(self):
         plugin = self.fl.get_selected_plugin()
         if plugin in self.plugin_parameters:
-            parameters = self.plugin_parameters[plugin]
-            self.parameters_for_index = parameters[: len(self.control_to_index)]
+            page_parameters = self._get_page_parameters(plugin)
+            self.parameters_for_index = page_parameters[: len(self.control_to_index)]
         else:
             self.parameters_for_index = []
+
+    def _get_page_parameters(self, plugin):
+        """Get parameters for the current page."""
+        if not self.plugin_parameters or plugin not in self.plugin_parameters:
+            return []
+
+        parameters = self.plugin_parameters[plugin]
+        if not parameters:
+            return []
+        
+        # Calculate page boundaries (page size = 8)
+        page_size = 8
+        start_index = self.parameter_page * page_size
+        end_index = start_index + page_size
+        
+        # Get parameters for this page
+        return parameters[start_index:end_index]
