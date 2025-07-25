@@ -2,16 +2,29 @@ from script.device_independent.util_view.view import View
 
 
 class PluginIdleScreenView(View):
-    def __init__(self, action_dispatcher, fl, screen_writer, plugin_parameters=None):
+    def __init__(self, action_dispatcher, fl, screen_writer, plugin_parameters=None, parameter_page=0):
         super().__init__(action_dispatcher)
         self.fl = fl
         self.screen_writer = screen_writer
         self.plugin_parameters = plugin_parameters
         self.plugin = None
+        self.parameter_page = parameter_page
         self._refresh_plugin_names()
 
     def handle_OnRefreshAction(self, action):
+        self._on_show()
+        pass
+
+    def _on_show(self):
         self._refresh_plugin_names()
+        if self.plugin:
+            title = self.plugin + " /" + str(self.parameter_page + 1)
+            self.screen_writer.display_idle(title, self.names or [])
+        else:
+            self.screen_writer.display_idle("Plugin")
+
+    def _on_hide(self):
+        self.screen_writer.display_idle("")
 
     def _refresh_plugin_names(self):
         current_plugin = self.fl.get_selected_plugin()
@@ -22,20 +35,19 @@ class PluginIdleScreenView(View):
         self.plugin = current_plugin
         if self.plugin_parameters and self.plugin in self.plugin_parameters:
             parameters = self.plugin_parameters[self.plugin]
-            self.names = tuple(self._to_short_name(getattr(param, 'name', str(param))) for param in parameters) if parameters else None
+            if parameters:
+                # Calculate page boundaries (page size = 8)
+                page_size = 8
+                start_index = self.parameter_page * page_size
+                end_index = start_index + page_size
+                
+                # Get parameters for this page
+                page_parameters = parameters[start_index:end_index]
+                self.names = tuple(self._to_short_name(getattr(param, 'name', str(param))) for param in page_parameters) if page_parameters else None
+            else:
+                self.names = None
         else:
             self.names = None
-        
-        self._on_show()
-
-    def _on_show(self):
-        if (self.plugin and self.names):
-            self.screen_writer.display_idle(self.plugin, self.names)
-        else:
-            self.screen_writer.display_idle("Plugin")
-
-    def _on_hide(self):
-        self.screen_writer.display_idle("")
 
     def _to_short_name(self, name):
         """Truncate parameter name to 4 characters using smart rules."""
