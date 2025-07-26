@@ -34,12 +34,12 @@ class PluginIdleScreenView(View):
             
         self.plugin = current_plugin
         page_parameters = get_page_parameters(self.plugin_parameters, current_plugin, self.parameter_page)
-        self.names = tuple(self._to_short_name(getattr(param, 'name', str(param))) for param in page_parameters) if page_parameters else None
+        self.names = tuple(self._to_short_name(getattr(param, 'name', None)) for param in page_parameters) if page_parameters else None
 
     def _to_short_name(self, name):
         """Truncate parameter name to 4 characters using smart rules."""
         if not name:
-            return ""
+            return None
         
         words = name.split()
         special_first_words = {"Filter", "Gate", "Sample", "LFO", "Master", "Osc", "Unison", "303", "VCF", "Grain", "Wave"}
