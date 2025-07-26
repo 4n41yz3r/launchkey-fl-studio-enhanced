@@ -1,4 +1,4 @@
-from script.constants import ChannelNavigationMode, Encoders
+from script.constants import Encoders
 from script.device_dependent.LaunchkeyMk4Range.paged_layout_manager import (
     PagedLayoutManager,
 )

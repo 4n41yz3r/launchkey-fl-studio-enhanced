@@ -3,6 +3,7 @@ from script.constants import ControlChangeType, PluginParameterType
 from script.device_independent.util_view.view import View
 from script.device_independent.view.control_change_rate_limiter import ControlChangeRateLimiter
 from script.fl_constants import PluginType, RefreshFlags
+from script.plugin.plugin_parameter_pagination import get_page_parameters
 from util.deadzone import Deadzone
 
 
@@ -52,9 +53,9 @@ class PluginParameterView(View):
 
     def _update_plugin_parameters(self):
         self.control_change_rate_limiter.reset()
-        plugin = self.fl.get_selected_plugin()
-        if plugin in self.plugin_parameters:
-            page_parameters = self._get_page_parameters(plugin)
+        plugin_name = self.fl.get_selected_plugin()
+        if plugin_name in self.plugin_parameters:
+            page_parameters = get_page_parameters(self.plugin_parameters, plugin_name, self.parameter_page)
             new_parameters_for_index = page_parameters[: len(self.control_to_index)]
             if self.parameters_for_index == new_parameters_for_index:
                 return
@@ -123,20 +124,3 @@ class PluginParameterView(View):
         for parameter in self.parameters_for_index:
             if parameter is not None and parameter.parameter_type is PluginParameterType.Plugin:
                 self.fl.reset_parameter_pickup(parameter.index)
-
-    def _get_page_parameters(self, plugin):
-        """Get parameters for the current page."""
-        if not self.plugin_parameters or plugin not in self.plugin_parameters:
-            return []
-
-        parameters = self.plugin_parameters[plugin]
-        if not parameters:
-            return []
-        
-        # Calculate page boundaries (page size = 8)
-        page_size = 8
-        start_index = self.parameter_page * page_size
-        end_index = start_index + page_size
-        
-        # Get parameters for this page
-        return parameters[start_index:end_index]

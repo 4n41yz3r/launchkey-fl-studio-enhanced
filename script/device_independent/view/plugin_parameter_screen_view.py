@@ -3,6 +3,7 @@ from math import isclose
 from script.constants import DisplayPriority, PluginParameterType
 from script.device_independent.util_view.view import View
 from script.fl_constants import PluginType, RefreshFlags
+from script.plugin.plugin_parameter_pagination import get_page_parameters
 
 
 class PluginParameterScreenView(View):
@@ -34,8 +35,8 @@ class PluginParameterScreenView(View):
             self._update_plugin_parameters()
 
     def _update_plugin_parameters(self):
-        plugin = self.fl.get_selected_plugin()
-        page_parameters = self._get_page_parameters(plugin)
+        plugin_name = self.fl.get_selected_plugin()
+        page_parameters = get_page_parameters(self.plugin_parameters, plugin_name, self.parameter_page)
         if not page_parameters:
             self._set_primary_text_for_all_controls("Not Used")
         else:
@@ -111,20 +112,3 @@ class PluginParameterScreenView(View):
     def _normalised_value_to_percentage_string(self, normalised_value, *, minimum=0, maximum=100, num_decimals=0):
         value = (maximum - minimum) * normalised_value + minimum
         return f'{format(value, f".{num_decimals}f")}%'
-
-    def _get_page_parameters(self, plugin):
-        """Get parameters for the current page."""
-        if not self.plugin_parameters or plugin not in self.plugin_parameters:
-            return []
-
-        parameters = self.plugin_parameters[plugin]
-        if not parameters:
-            return []
-        
-        # Calculate page boundaries (page size = 8)
-        page_size = 8
-        start_index = self.parameter_page * page_size
-        end_index = start_index + page_size
-        
-        # Get parameters for this page
-        return parameters[start_index:end_index]

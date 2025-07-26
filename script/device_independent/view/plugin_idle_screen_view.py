@@ -1,5 +1,5 @@
 from script.device_independent.util_view.view import View
-
+from script.plugin.plugin_parameter_pagination import get_page_parameters
 
 class PluginIdleScreenView(View):
     def __init__(self, action_dispatcher, fl, screen_writer, plugin_parameters=None, parameter_page=0):
@@ -33,25 +33,8 @@ class PluginIdleScreenView(View):
             return
             
         self.plugin = current_plugin
-        page_parameters = self._get_page_parameters()
+        page_parameters = get_page_parameters(self.plugin_parameters, current_plugin, self.parameter_page)
         self.names = tuple(self._to_short_name(getattr(param, 'name', str(param))) for param in page_parameters) if page_parameters else None
-
-    def _get_page_parameters(self):
-        """Get parameters for the current page."""
-        if not self.plugin_parameters or self.plugin not in self.plugin_parameters:
-            return []
-        
-        parameters = self.plugin_parameters[self.plugin]
-        if not parameters:
-            return []
-        
-        # Calculate page boundaries (page size = 8)
-        page_size = 8
-        start_index = self.parameter_page * page_size
-        end_index = start_index + page_size
-        
-        # Get parameters for this page
-        return parameters[start_index:end_index]
 
     def _to_short_name(self, name):
         """Truncate parameter name to 4 characters using smart rules."""
