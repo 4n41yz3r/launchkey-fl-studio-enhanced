@@ -1,5 +1,5 @@
 from script.constants import ChannelNavigationMode, Encoders
-from script.device_dependent.LaunchkeyMk4Range.dynamic_paged_layout_manager import (
+from script.device_dependent.LaunchkeyMk4Range.paged_layout_manager import (
     PagedLayoutManager,
 )
 from script.device_independent.view import (
