@@ -13,7 +13,7 @@ from util.control_to_index import make_control_to_index
 
 
 class PluginEncoderLayoutManager(PagedLayoutManager):
-    def __init__(self, action_dispatcher, fl, product_defs, screen_writer, button_led_writer, device_manager, num_pages=2):
+    def __init__(self, action_dispatcher, fl, product_defs, screen_writer, button_led_writer, device_manager, num_pages=3):
         self.device_manager = device_manager
         self.fl = fl
         self.screen_writer = screen_writer

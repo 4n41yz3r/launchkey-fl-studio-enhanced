@@ -24,7 +24,8 @@ class PluginIdleScreenView(View):
             self.screen_writer.display_idle("Plugin")
 
     def _on_hide(self):
-        self.screen_writer.display_idle("")
+        # Calling display_idle("") here causes a flicker when switching pages
+        pass
 
     def _refresh_plugin_names(self):
         current_plugin = self.fl.get_selected_plugin()

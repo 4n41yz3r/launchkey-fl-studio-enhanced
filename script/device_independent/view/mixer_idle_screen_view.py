@@ -15,4 +15,5 @@ class MixerIdleScreenView(View):
         self.screen_writer.display_idle("Mixer", self.page_name)
 
     def _on_hide(self):
-        self.screen_writer.display_idle("")
+        # Calling display_idle("") here causes a flicker when switching pages
+        pass
