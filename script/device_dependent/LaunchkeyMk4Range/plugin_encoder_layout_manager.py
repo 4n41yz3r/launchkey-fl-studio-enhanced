@@ -13,76 +13,14 @@ from util.control_to_index import make_control_to_index
 
 
 class PluginEncoderLayoutManager(PagedLayoutManager):
-    def __init__(self, action_dispatcher, fl, product_defs, screen_writer, button_led_writer, device_manager):
+    def __init__(self, action_dispatcher, fl, product_defs, screen_writer, button_led_writer, device_manager, num_pages=2):
         self.device_manager = device_manager
+        self.fl = fl
         self.screen_writer = screen_writer
         self.button_led_writer = button_led_writer
-        control_to_index = make_control_to_index(Encoders.FirstControlIndex.value, Encoders.Num.value)
+        self.control_to_index = make_control_to_index(Encoders.FirstControlIndex.value, Encoders.Num.value)
 
-        layouts = [
-            PagedLayoutManager.Layout(
-                layout_id=0,
-                notification_primary="Plugin",
-                notification_secondary="Page 1",
-                views=[
-                    PluginIdleScreenView(action_dispatcher, fl, screen_writer, plugin_parameter_mappings, parameter_page=0),
-                    PluginParameterView(
-                        action_dispatcher,
-                        fl,
-                        plugin_parameter_mappings,
-                        control_to_index=control_to_index,
-                        parameter_page=0
-                    ),
-                    PluginParameterScreenView(
-                        action_dispatcher,
-                        fl,
-                        screen_writer,
-                        plugin_parameter_mappings,
-                        control_to_index=control_to_index,
-                        parameter_page=0
-                    ),
-                    PluginParameterPreviewView(
-                        action_dispatcher,
-                        fl,
-                        product_defs,
-                        plugin_parameter_mappings,
-                        control_to_index=control_to_index,
-                        parameter_page=0
-                    )
-                ],
-            ),
-            PagedLayoutManager.Layout(
-                layout_id=1,
-                notification_primary="Plugin",
-                notification_secondary="Page 2",
-                views=[
-                    PluginIdleScreenView(action_dispatcher, fl, screen_writer, plugin_parameter_mappings, parameter_page=1),
-                    PluginParameterView(
-                        action_dispatcher,
-                        fl,
-                        plugin_parameter_mappings,
-                        control_to_index=control_to_index,
-                        parameter_page=1
-                    ),
-                    PluginParameterScreenView(
-                        action_dispatcher,
-                        fl,
-                        screen_writer,
-                        plugin_parameter_mappings,
-                        control_to_index=control_to_index,
-                        parameter_page=1
-                    ),
-                    PluginParameterPreviewView(
-                        action_dispatcher,
-                        fl,
-                        product_defs,
-                        plugin_parameter_mappings,
-                        control_to_index=control_to_index,
-                        parameter_page=1
-                    )
-                ],
-            )
-        ]
+        layouts = [self._create_layout(action_dispatcher, product_defs, page) for page in range(num_pages)]
 
         super().__init__(
             action_dispatcher,
@@ -92,6 +30,39 @@ class PluginEncoderLayoutManager(PagedLayoutManager):
             layouts,
             "SelectNextPluginEncoderPage",
             "SelectPreviousPluginEncoderPage",
+        )
+
+    def _create_layout(self, action_dispatcher, product_defs, page):
+        return PagedLayoutManager.Layout(
+            layout_id=page,
+            notification_primary="Plugin",
+            notification_secondary=f"Page {page + 1}",
+            views=[
+                PluginIdleScreenView(action_dispatcher, self.fl, self.screen_writer, plugin_parameter_mappings, parameter_page=page),
+                PluginParameterView(
+                    action_dispatcher,
+                    self.fl,
+                    plugin_parameter_mappings,
+                    control_to_index=self.control_to_index,
+                    parameter_page=page
+                ),
+                PluginParameterScreenView(
+                    action_dispatcher,
+                    self.fl,
+                    self.screen_writer,
+                    plugin_parameter_mappings,
+                    control_to_index=self.control_to_index,
+                    parameter_page=page
+                ),
+                PluginParameterPreviewView(
+                    action_dispatcher,
+                    self.fl,
+                    product_defs,
+                    plugin_parameter_mappings,
+                    control_to_index=self.control_to_index,
+                    parameter_page=page
+                )
+            ],
         )
 
     def show(self):
