@@ -1,0 +1,132 @@
+# FL Studio Novation Launchkey MK4 Enhanced MIDI Script
+
+A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers with enhanced parameter pagination and improved mixer mode display functionality.
+
+
+## 🚀 Features
+
+### ✨ **Parameter Pagination in Plugin Mode**
+- **8-parameter pages**: Navigate through plugin parameters in organized 8-parameter chunks
+- **Smart parameter display**: Intelligent name truncation algorithm for optimal screen readability
+- **Synchronized views**: All plugin views stay perfectly synchronized across pages
+- **Page indicators**: Clear visual feedback showing current page number (e.g., "Plugin /1", "Plugin /2")
+- **Extended plugin support**: Pre-configured parameter mappings for popular FL Studio plugins
+- **Custom parameter mappings**: Add your own parameter definitions for any plugin
+
+### 🔌 **Plugin Parameter Support**
+- **Built-in mappings**: Pre-configured parameter sets for commonly used plugins
+- **User customizable**: Easy-to-edit parameter dictionary for adding your favorite plugins
+
+### 🎛️ **Enhanced Mixer View Display**
+- **Current mode indicators**: Visual display of the currently selected mixer mode
+- **Page-aware navigation**: Seamless switching between different parameter pages
+
+## 📋 Supported Hardware
+
+- Novation Launchkey MK4 25/37/49/61
+- Hardware IDs: `00 20 29 46 01 00 01`, `00 20 29 45 01 00 01`, `00 20 29 44 01 00 01`, `00 20 29 43 01 00 01`
+
+
+## 🛠️ Installation
+
+1. **Download** the script files
+2. **Copy** the entire folder to your FL Studio MIDI Scripts directory:
+   ```
+   C:\Users\[Username]\Documents\Image-Line\FL Studio\Settings\Hardware\[NewFolderName]
+   ```
+3. **Restart** FL Studio
+4. **Configure** your Launchkey MK4 in FL Studio's MIDI settings:
+   - Go to `Options > MIDI Settings`
+   - Select your DAW Launchkey MK4 device (`MIDIIN2`) under `Input` tab
+   - Set the `Controller type` to `Milos Launchkey MK4 DAW`
+
+
+## 🎮 Usage
+
+### Plugin Parameter Navigation
+- **Encoder knobs**: Control parameters 1-8 on current page
+- **Page Up/Down buttons**: Navigate between parameter pages
+- **Screen display**: Shows parameter names with smart truncation
+- **Real-time feedback**: Parameter values update in real-time
+
+### Mixer Mode Features
+- **Mode indicators**: Clear display of current mixer mode
+- **Page synchronization**: All views update together when switching pages
+
+### Plugin Parameter Mappings
+The script includes pre-configured parameter mappings for popular FL Studio plugins, with support for multiple pages of parameters per plugin. Users can easily extend this by adding their own custom parameter definitions.
+
+## 🔧 Customization
+
+### Adding Custom Plugin Parameters
+You can add parameter mappings for your favorite plugins by editing the user plugin parameters dictionary:
+
+```python
+# In user/user_defined_plugin_mappings.py
+user_plugin_parameter_mappings = {
+    "Your Plugin Name": [
+        # Page 1 parameters (0-7)
+        PluginParameter(name="Param 1", index=0),
+        PluginParameter(name="Param 2", index=1),
+        PluginParameter(name="Param 3", index=2),
+        # ... add up to 8 parameters per page
+        
+        # Page 2 parameters (8-15)
+        PluginParameter(name="Param 9", index=8),
+        PluginParameter(name="Param 10", index=9),
+        # ... continue for additional pages
+    ],
+    "Another Plugin": [
+        # Add parameters for other plugins
+    ]
+}
+```
+
+### Finding Plugin Parameter Indices
+To find the correct parameter indices for your plugins:
+1. Open FL Studio and load your plugin
+2. Left-click on the plugin in the browser window to see the parameters
+3. The parameter position corresponds to their index numbers starting with 0
+4. Add the most useful parameters to your custom mapping
+
+### Adding More Pages
+Configure the number of pages in the layout manager:
+
+```python
+# In plugin_encoder_layout_manager.py
+def __init__(self, ..., num_pages=4):  # Increase from default 3 to 4 pages
+```
+
+
+## 🤝 Contributing
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+
+## 📝 License
+
+This project is licensed under the GNU GPL v3.0 License.
+
+
+## 🙏 Acknowledgments
+
+- **Novation** for the excellent Launchkey MK4 hardware
+- **Image-Line** for FL Studio and the MIDI script API
+- **FL Studio community** for inspiration and feedback
+
+
+## 📞 Support
+
+If you encounter any issues or have feature requests:
+
+1. **Check** the existing issues on GitHub
+2. **Create** a new issue with detailed information about your problem
+3. **Include** your FL Studio version, Launchkey model, and any error messages
+
+---
+
+**Made with ❤️ for the FL Studio community**
