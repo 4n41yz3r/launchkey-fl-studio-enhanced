@@ -67,6 +67,16 @@ class Button(CustomEnum):
     EncoderPageDown = 31
     PadsPageUp = 32
     PadsPageDown = 33
+    RightArrow = 5
+    Function = 6
+    EncoderPageUpShift = 34
+    EncoderPageDownShift = 35
+    PadsPageUpShift = 36
+    PadsPageDownShift = 37
+    RightArrowShift = 38
+    FunctionShift = 39
+    RightArrowShift = 7
+    FunctionShift = 8
 
 
 class SurfaceEvent(CustomEnum):
@@ -86,6 +96,8 @@ class SurfaceEvent(CustomEnum):
     EncoderLast = 0xBF, 0x5C
     ButtonTrackRight = 0xB0, 0x66
     ButtonTrackLeft = 0xB0, 0x67
+    ButtonRightArrow = 0xB0, 0x68
+    ButtonFunction = 0xB0, 0x69
     ButtonTrackRightShift = 0xB0, 0x6C
     ButtonTrackLeftShift = 0xB0, 0x6D
     ButtonTransportPlay = 0xB0, 0x73

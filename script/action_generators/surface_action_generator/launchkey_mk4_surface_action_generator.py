@@ -43,12 +43,20 @@ class LaunchkeyMk4SurfaceActionGenerator:
             self.product_defs.SurfaceEvent.ButtonEncoderPageDown.value: self.product_defs.Button.EncoderPageDown,
             self.product_defs.SurfaceEvent.ButtonPadsPageUp.value: self.product_defs.Button.PadsPageUp,
             self.product_defs.SurfaceEvent.ButtonPadsPageDown.value: self.product_defs.Button.PadsPageDown,
+            self.product_defs.SurfaceEvent.ButtonRightArrow.value: self.product_defs.Button.RightArrow,
+            self.product_defs.SurfaceEvent.ButtonFunction.value: self.product_defs.Button.Function,
         }
 
         self.modified_event_type_to_button = {
             self.product_defs.SurfaceEvent.ButtonTrackLeftShift.value: self.product_defs.Button.TrackLeftShift,
             self.product_defs.SurfaceEvent.ButtonTrackRightShift.value: self.product_defs.Button.TrackRightShift,
             self.product_defs.SurfaceEvent.ButtonUndo.value: self.product_defs.Button.UndoShift,
+            self.product_defs.SurfaceEvent.ButtonEncoderPageUp.value: self.product_defs.Button.EncoderPageUpShift,
+            self.product_defs.SurfaceEvent.ButtonEncoderPageDown.value: self.product_defs.Button.EncoderPageDownShift,
+            self.product_defs.SurfaceEvent.ButtonPadsPageUp.value: self.product_defs.Button.PadsPageUpShift,
+            self.product_defs.SurfaceEvent.ButtonPadsPageDown.value: self.product_defs.Button.PadsPageDownShift,
+            self.product_defs.SurfaceEvent.ButtonRightArrow.value: self.product_defs.Button.RightArrowShift,
+            self.product_defs.SurfaceEvent.ButtonFunction.value: self.product_defs.Button.FunctionShift,
         }
 
         self.common_action_generators = [
