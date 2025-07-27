@@ -68,6 +68,7 @@ from .pattern_select_bank_view import PatternSelectBankView
 from .pattern_select_screen_view import PatternSelectScreenView
 from .pattern_select_view import PatternSelectView
 from .plugin_idle_screen_view import PluginIdleScreenView
+from .simple_pattern_select_view import SimplePatternSelectView
 from .plugin_parameter_led_view import PluginParameterLedView
 from .plugin_parameter_preview_view import PluginParameterPreviewView
 from .plugin_parameter_screen_view import PluginParameterScreenView
@@ -186,6 +187,7 @@ __all__ = [
     "PatternSelectScreenView",
     "PatternSelectView",
     "PluginIdleScreenView",
+    "SimplePatternSelectView",
     "PluginParameterLedView",
     "PluginParameterPreviewView",
     "PluginParameterScreenView",

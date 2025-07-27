@@ -27,6 +27,7 @@ from script.device_independent.view import (
     TransportRecordButtonView,
     TransportStopButtonView,
     UndoButtonView,
+    SimplePatternSelectView,
 )
 from script.model import Model
 from util.command_dispatcher import CommandDispatcher
@@ -82,6 +83,7 @@ class Application:
             UndoButtonView(self.action_dispatcher, self.button_led_writer, self.fl, self.product_defs),
             RedoButtonView(self.action_dispatcher, self.button_led_writer, self.fl, self.product_defs),
             ShowHighlightsView(self.action_dispatcher, self.product_defs, self.model),
+            SimplePatternSelectView(self.action_dispatcher, self.screen_writer, self.button_led_writer, self.fl, self.product_defs),
         }
         for view in self.global_views:
             view.show()

@@ -166,6 +166,8 @@ FunctionToButton = {
     "ArmSelect": Button.ArmSelect,
     "SelectNextPluginEncoderPage": Button.EncoderPageUp,
     "SelectPreviousPluginEncoderPage": Button.EncoderPageDown,
+    "PatternPrevious": Button.PadsPageUpShift,
+    "PatternNext": Button.PadsPageDownShift,
 }
 
 ButtonToLedIndex = {
@@ -195,6 +197,8 @@ ButtonToLedIndex = {
     Button.EncoderPageDown: 0x34,
     Button.PadsPageUp: 0x6A,
     Button.PadsPageDown: 0x6B,
+    Button.PadsPageUpShift: 0x6A,
+    Button.PadsPageDownShift: 0x6B,
 }
 
 EncoderIndexToControlIndex = {
