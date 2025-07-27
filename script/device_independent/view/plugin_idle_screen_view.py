@@ -42,7 +42,7 @@ class PluginIdleScreenView(View):
             return None
         
         words = name.split()
-        special_first_words = {"Filter", "Gate", "Sample", "LFO", "Master", "Osc", "Unison", "303", "VCF", "Grain", "Wave"}
+        special_first_words = {"Filter", "Gate", "Sample", "LFO", "Master", "Osc", "Unison", "303", "VCF", "Grain", "Wave", "Offset"}
 
         if len(words) == 1:
             # Single word: take first 4 characters

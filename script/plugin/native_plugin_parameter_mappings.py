@@ -55,6 +55,19 @@ native_plugin_parameter_mappings = {
         PluginParameter(
             index=ChannelParameter.SwingMix.value, name="Swing Mix", parameter_type=PluginParameterType.Channel
         ),
+        PluginParameter(index=ChannelParameter.TimeStretch.value, name="Time Stretch", parameter_type=PluginParameterType.Channel),
+        PluginParameter(index=ChannelParameter.BipolarPan.value, name="Offset Pan", parameter_type=PluginParameterType.Channel),
+        PluginParameter(index=ChannelParameter.BipolarVolume.value, name="Offset Volume", parameter_type=PluginParameterType.Channel),
+        PluginParameter(index=ChannelParameter.BipolarFilterCutoff.value, name="Offset Cutoff", parameter_type=PluginParameterType.Channel),
+        PluginParameter(index=ChannelParameter.BipolarFilterResonance.value, name="Offset Resonance", parameter_type=PluginParameterType.Channel),
+        PluginParameter(index=ChannelParameter.BipolarPitch.value, name="Offset Pitch", parameter_type=PluginParameterType.Channel),
+        None,
+        None,
+        None,
+        # PluginParameter(index=ChannelParameter.Volume.value, name="Volume", parameter_type=PluginParameterType.Channel),
+        # PluginParameter(index=ChannelParameter.Pan.value, name="Pan", parameter_type=PluginParameterType.Channel),
+        # PluginParameter(index=ChannelParameter.Experiment1.value, name="Experiment 1", parameter_type=PluginParameterType.Channel),
+        # PluginParameter(index=ChannelParameter.Experiment3.value, name="Experiment 3", parameter_type=PluginParameterType.Channel),
     ],
     "AudioClip": [
         PluginParameter(

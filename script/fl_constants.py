@@ -132,6 +132,20 @@ class PluginChannelParameterIndex(CustomEnum):
     SampleStart = 13
     BipolarFilterCutoff = 19
     BipolarFilterResonance = 20
+    # New parameters from here
+    BipolarPan = 16
+    BipolarVolume = 17
+    BipolarPitch = 18
+    TimeStretch = 14
+    # The below parameters work, but are not properly updated in the UI. Needs fix before use!
+    Volume = 0
+    Pan = 1
+    Pitch = 4
+    Mute = 7
+    TargetMixerTrack = 8
+    Portamento = 6
+    # Experiment1 = 10
+    # Experiment3 = 15
 
 
 PluginChannelParameterValueRange = {
@@ -144,6 +158,19 @@ PluginChannelParameterValueRange = {
     PluginChannelParameterIndex.SampleStart.value: (0, 16384),
     PluginChannelParameterIndex.BipolarFilterCutoff.value: (-256, 256),
     PluginChannelParameterIndex.BipolarFilterResonance.value: (-256, 256),
+    PluginChannelParameterIndex.BipolarPan.value: (-6400, 6400),
+    PluginChannelParameterIndex.BipolarVolume.value: (0, 25600),
+    PluginChannelParameterIndex.BipolarPitch.value: (-200, 200),
+    PluginChannelParameterIndex.TimeStretch.value: (0, 3700),
+
+    # New parameters, not shown in the UI - needs fix
+    PluginChannelParameterIndex.Volume.value: (0, 16384),
+    PluginChannelParameterIndex.Pan.value: (0, 12800),
+    PluginChannelParameterIndex.Pitch.value: (-100, 100),
+    PluginChannelParameterIndex.Mute.value: (0, 1),
+    PluginChannelParameterIndex.TargetMixerTrack.value: (0, 64),
+    # PluginChannelParameterIndex.Experiment1.value: (0, 256),
+    # PluginChannelParameterIndex.Experiment3.value: (0, 256),
 }
 
 
