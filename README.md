@@ -1,25 +1,16 @@
 # FL Studio Novation Launchkey MK4 Enhanced MIDI Script
 
-A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers with enhanced parameter pagination and improved mixer mode display functionality.
+A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers with enhanced features and display feedback.
 
 
 ## 🚀 Features
 
-### ✨ **Parameter Pagination in Plugin Mode**
 - **8-parameter pages**: Navigate through plugin parameters in organized 8-parameter chunks
-- **Smart parameter display**: Intelligent name truncation algorithm for optimal screen readability
-- **Synchronized views**: All plugin views stay perfectly synchronized across pages
-- **Page indicators**: Clear visual feedback showing current page number (e.g., "Plugin /1", "Plugin /2")
 - **Extended plugin support**: Pre-configured parameter mappings for popular FL Studio plugins
 - **Custom parameter mappings**: Add your own parameter definitions for any plugin
+- **Pattern navigation**: Simple pattern selection with previous/next buttons and on-screen feedback
+- **Current mixer mode indicators**: Visual display of the currently selected mixer mode
 
-### 🔌 **Plugin Parameter Support**
-- **Built-in mappings**: Pre-configured parameter sets for commonly used plugins
-- **User customizable**: Easy-to-edit parameter dictionary for adding your favorite plugins
-
-### 🎛️ **Enhanced Mixer View Display**
-- **Current mode indicators**: Visual display of the currently selected mixer mode
-- **Page-aware navigation**: Seamless switching between different parameter pages
 
 ## 📋 Supported Hardware
 
@@ -45,13 +36,17 @@ A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers wit
 
 ### Plugin Parameter Navigation
 - **Encoder knobs**: Control parameters 1-8 on current page
-- **Page Up/Down buttons**: Navigate between parameter pages
-- **Screen display**: Shows parameter names with smart truncation
-- **Real-time feedback**: Parameter values update in real-time
+- **Encoder Up/Down buttons**: Navigate between parameter pages
+- **Idle screen display**: Shows parameter names with smart truncation
+- **Real-time feedback**: Parameter values/display update in real-time
+
+### Pattern Navigation
+- **Shift + Pad Up/Down buttons**: Navigate between patterns using dedicated controller buttons
+- **Visual feedback**: Current pattern number notification display when switching
 
 ### Mixer Mode Features
-- **Mode indicators**: Clear display of current mixer mode
-- **Page synchronization**: All views update together when switching pages
+- **Current mode indicators**: Clear display of current mixer mode
+
 
 ### Plugin Parameter Mappings
 The script includes pre-configured parameter mappings for popular FL Studio plugins, with support for multiple pages of parameters per plugin. Users can easily extend this by adding their own custom parameter definitions.
@@ -86,7 +81,7 @@ user_plugin_parameter_mappings = {
 To find the correct parameter indices for your plugins:
 1. Open FL Studio and load your plugin
 2. Left-click on the plugin in the browser window to see the parameters
-3. The parameter position corresponds to their index numbers starting with 0
+3. The parameter position usually corresponds to their index numbers starting with 0
 4. Add the most useful parameters to your custom mapping
 
 ### Adding More Pages
