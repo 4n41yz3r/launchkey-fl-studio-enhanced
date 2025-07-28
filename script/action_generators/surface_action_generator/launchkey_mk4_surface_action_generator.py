@@ -6,6 +6,7 @@ from script.action_generators.surface_action_generator.keyboard_controller_commo
     KeyboardControllerCommonFaderLayoutActionGenerator,
     KeyboardControllerCommonPadActionGenerator,
     KeyboardControllerCommonPadLayoutActionGenerator,
+    KeyboardControllerCommonPotActionGenerator,
 )
 from script.action_generators.surface_action_generator.surface_actions import (
     EncoderLayoutChangedAction,
@@ -65,6 +66,10 @@ class LaunchkeyMk4SurfaceActionGenerator:
                 is_modifier_event=lambda event: event == product_defs.SurfaceEvent.ButtonShift.value
                 or event == product_defs.SurfaceEvent.LegacyButtonShift.value,
             ),
+            KeyboardControllerCommonPotActionGenerator(product_defs), # HACK: To make the MK4 work with Sequencer Pads
+            # In some cases (when holding sequencer pads), MK4 generates pot MIDI events instead of encoder events
+            # Pot variables and indices have been added to the product_defs to support this workaround
+
             KeyboardControllerCommonEncoderActionGenerator(product_defs),
             KeyboardControllerCommonFaderActionGenerator(product_defs),
             KeyboardControllerCommonFaderLayoutActionGenerator(product_defs),

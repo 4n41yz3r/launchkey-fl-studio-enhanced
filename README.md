@@ -41,7 +41,7 @@ A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers wit
 - **Real-time feedback**: Parameter values/display update in real-time
 
 ### Pattern Navigation
-- **Shift + Pad Up/Down buttons**: Navigate between patterns using dedicated controller buttons
+- **Shift + Pad Up/Down buttons**: Navigate between patterns when in DAW or Drum pad mode
 - **Visual feedback**: Current pattern number notification display when switching
 
 ### Mixer Mode Features

@@ -1,11 +1,14 @@
-from script.constants import Encoders, Faders
+from script.constants import Encoders, Pots, Faders
 from util.custom_enum import CustomEnum
 
+# HACK: The Launchkey MK4 uses encoders instead of pots, so we define PotIndexToControlIndex
+# to map pot indices to control indices, even though they are actually encoders.
+# This is a workaround to maintain compatibility with existing sequencer code that expects pots.
 
 class PadLayout(CustomEnum):
     ChannelRack = 2
-    Drum = 15
-
+    Sequencer = 15 # New layout for Sequencer replacing Drum layout
+    Drum = 11 # Original Drum layout variable - If you want it back, set Drum = 15, and Sequencer = 11
 
 class FaderLayout(CustomEnum):
     Volume = 1
@@ -16,6 +19,8 @@ class EncoderLayout(CustomEnum):
     Mixer = 1
     Sends = 4
     Transport = 5
+    Momentary = 10 # New layout for momentary encoders
+    Revert = 127 # Revert from Momentary to previous layout
 
 
 class Constants(CustomEnum):
@@ -32,10 +37,12 @@ class Constants(CustomEnum):
     NotesForPadLayout = {
         PadLayout.ChannelRack: [96, 97, 98, 99, 100, 101, 102, 103, 112, 113, 114, 115, 116, 117, 118, 119],
         PadLayout.Drum: [40, 41, 42, 43, 48, 49, 50, 51, 36, 37, 38, 39, 44, 45, 46, 47],
+        PadLayout.Sequencer: [32, 33, 34, 35, 36, 37, 38, 39, 48, 49, 50, 51, 52, 53, 54, 55], # New layout for Sequencer
     }
     PadForLayoutNote = {
         **{note: pad for pad, note in enumerate(NotesForPadLayout[PadLayout.ChannelRack])},
         **{note: pad for pad, note in enumerate(NotesForPadLayout[PadLayout.Drum])},
+        **{note: pad for pad, note in enumerate(NotesForPadLayout[PadLayout.Sequencer])},
     }
 
 
@@ -94,6 +101,8 @@ class SurfaceEvent(CustomEnum):
     FaderLast = 0xBF, 0x0D
     EncoderFirst = 0xBF, 0x55
     EncoderLast = 0xBF, 0x5C
+    PotFirst = 0xBF, 0x15 # Hack to support pots through encoders
+    PotLast = 0xBF, 0x22 # Hack to support pots through encoders
     ButtonTrackRight = 0xB0, 0x66
     ButtonTrackLeft = 0xB0, 0x67
     ButtonRightArrow = 0xB0, 0x68
@@ -205,6 +214,10 @@ EncoderIndexToControlIndex = {
     index: Encoders.FirstControlIndex.value + control for index, control in enumerate(range(Encoders.Num.value))
 }
 
+PotIndexToControlIndex = {
+    index: Pots.FirstControlIndex.value + control for index, control in enumerate(range(Pots.Num.value))
+}
+
 FaderIndexToControlIndex = {
     index: Faders.FirstControlIndex.value + control for index, control in enumerate(range(Faders.Num.value))
 }
@@ -225,6 +238,8 @@ class LaunchkeyMk4ProductDefs:
         self.ControlIndexToEncoderIndex = {v: k for k, v in self.EncoderIndexToControlIndex.items()}
         self.FaderIndexToControlIndex = FaderIndexToControlIndex
         self.ControlIndexToFaderIndex = {v: k for k, v in self.FaderIndexToControlIndex.items()}
+        self.PotIndexToControlIndex = PotIndexToControlIndex # Hack to support pots through encoders
+        self.ControlIndexToPotIndex = {v: k for k, v in self.PotIndexToControlIndex.items()} # Hack to support pots through encoders
 
     def IsShiftButton(self, button):
         return button in [Button.UndoShift, Button.TrackRightShift, Button.TrackLeftShift]

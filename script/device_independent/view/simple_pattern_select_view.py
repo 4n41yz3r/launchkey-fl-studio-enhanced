@@ -1,3 +1,5 @@
+from script.actions import PatternSelectedAction
+from script.constants import PatternSelectionMethod
 from script.device_independent.util_view.single_button_view import SingleButtonView
 from script.device_independent.util_view.view import View
 
@@ -61,17 +63,10 @@ class SimplePatternSelectView(View):
     def _select_next_pattern(self):
         current_pattern = self.fl.get_selected_pattern_index()
         self.fl.select_pattern(current_pattern + 1)
-        # Get the actual selected pattern after the selection
-        actual_pattern = self.fl.get_selected_pattern_index()
-        self._display_pattern_notification(actual_pattern)
+        self.action_dispatcher.dispatch(PatternSelectedAction(method=PatternSelectionMethod.Explicit))
 
     def _select_previous_pattern(self):
         current_pattern = self.fl.get_selected_pattern_index()
         if current_pattern > 0:  # Prevent going below pattern 0
             self.fl.select_pattern(current_pattern - 1)
-            # Get the actual selected pattern after the selection
-            actual_pattern = self.fl.get_selected_pattern_index()
-            self._display_pattern_notification(actual_pattern)
-
-    def _display_pattern_notification(self, pattern_number):
-        self.screen_writer.display_notification(primary_text=f"Pattern", secondary_text=f"#{pattern_number}")
+            self.action_dispatcher.dispatch(PatternSelectedAction(method=PatternSelectionMethod.Explicit))

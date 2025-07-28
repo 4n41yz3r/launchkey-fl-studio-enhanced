@@ -7,6 +7,8 @@ from script.device_dependent.LaunchkeyMk4Range import (
     PluginEncoderLayoutManager,
     SendsEncoderLayoutManager,
     TransportEncoderLayoutManager,
+    MomentaryEncoderLayoutManager,
+    SequencerPadLayoutManager,
 )
 from script.device_independent.fl_gui.fl_window_manager import FLWindowManager
 from script.device_independent.view import (
@@ -28,6 +30,9 @@ from script.device_independent.view import (
     TransportStopButtonView,
     UndoButtonView,
     SimplePatternSelectView,
+    PatternSelectScreenView,
+    SequencerStepEditScreenView,
+    ChannelSelectedScreenView,
 )
 from script.model import Model
 from util.command_dispatcher import CommandDispatcher
@@ -84,6 +89,9 @@ class Application:
             RedoButtonView(self.action_dispatcher, self.button_led_writer, self.fl, self.product_defs),
             ShowHighlightsView(self.action_dispatcher, self.product_defs, self.model),
             SimplePatternSelectView(self.action_dispatcher, self.screen_writer, self.button_led_writer, self.fl, self.product_defs),
+            PatternSelectScreenView(self.action_dispatcher, self.fl, self.screen_writer),
+            SequencerStepEditScreenView(self.action_dispatcher, self.screen_writer, self.fl),
+            ChannelSelectedScreenView(self.action_dispatcher, self.screen_writer, self.fl),
         }
         for view in self.global_views:
             view.show()
@@ -129,13 +137,16 @@ class Application:
             self.active_fader_layout_manager.focus_windows()
 
     def handle_EncoderLayoutChangedAction(self, action):
+        skip_window_focusing = isinstance(self.active_encoder_layout_manager, MomentaryEncoderLayoutManager)
+
         if self.active_encoder_layout_manager:
             self.active_encoder_layout_manager.hide()
 
         self.active_encoder_layout_manager = self._create_encoder_layout_manager(action.layout)
         if self.active_encoder_layout_manager:
             self.active_encoder_layout_manager.show()
-            self.active_encoder_layout_manager.focus_windows()
+            if not skip_window_focusing:
+                self.active_encoder_layout_manager.focus_windows()
 
     def _create_pad_layout_manager(self, layout):
         if layout == self.product_defs.PadLayout.ChannelRack:
@@ -147,6 +158,19 @@ class Application:
                 self.fl,
                 self.product_defs,
                 self.model,
+                self.fl_window_manager,
+            )
+        if layout == self.product_defs.PadLayout.Sequencer:
+            return SequencerPadLayoutManager(
+                self.action_dispatcher,
+                self.command_dispatcher,
+                self.pad_led_writer,
+                self.button_led_writer,
+                self.screen_writer,
+                self.fl,
+                self.product_defs,
+                self.model,
+                self.device_manager,
                 self.fl_window_manager,
             )
         if layout == self.product_defs.PadLayout.Drum:
@@ -190,5 +214,9 @@ class Application:
         if layout == self.product_defs.EncoderLayout.Transport:
             return TransportEncoderLayoutManager(
                 self.action_dispatcher, self.fl, self.screen_writer, self.device_manager, self.product_defs
+            )
+        if layout == self.product_defs.EncoderLayout.Momentary:
+            return MomentaryEncoderLayoutManager(
+                self.action_dispatcher, self.fl, self.model
             )
         return GenericEncoderLayoutManager(self.action_dispatcher, self.screen_writer)

@@ -6,6 +6,8 @@ from .paged_layout_manager import PagedLayoutManager
 from .plugin_encoder_layout_manager import PluginEncoderLayoutManager
 from .sends_encoder_layout_manager import SendsEncoderLayoutManager
 from .transport_encoder_layout_manager import TransportEncoderLayoutManager
+from .sequencer_pad_layout_manager import SequencerPadLayoutManager
+from .momentary_encoder_layout_manager import MomentaryEncoderLayoutManager
 
 __all__ = [
     "ChannelRackPadLayoutManager",
@@ -16,4 +18,6 @@ __all__ = [
     "PluginEncoderLayoutManager",
     "SendsEncoderLayoutManager",
     "TransportEncoderLayoutManager",
+    "SequencerPadLayoutManager",
+    "MomentaryEncoderLayoutManager",
 ]
