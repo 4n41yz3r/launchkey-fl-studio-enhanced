@@ -177,6 +177,8 @@ FunctionToButton = {
     "PatternPrevious": Button.PadsPageUpShift,
     "PatternNext": Button.PadsPageDownShift,
     "ExitStepEditLatchMode": Button.Function,
+    "SequencerStepsPageRight": Button.RightArrow,
+    "SequencerStepsPageLeft": Button.Function,
 }
 
 ButtonToLedIndex = {
