@@ -174,11 +174,13 @@ FunctionToButton = {
     "ArmSelect": Button.ArmSelect,
     "SelectNextPluginEncoderPage": Button.EncoderPageUp,
     "SelectPreviousPluginEncoderPage": Button.EncoderPageDown,
-    "PatternPrevious": Button.PadsPageUpShift,
-    "PatternNext": Button.PadsPageDownShift,
+    "SelectPreviousPattern": Button.PadsPageUpShift,
+    "SelectNextPattern": Button.PadsPageDownShift,
     "ExitStepEditLatchMode": Button.Function,
     "SequencerStepsPageRight": Button.RightArrow,
     "SequencerStepsPageLeft": Button.Function,
+    "SelectPreviousMixerTrackPlugin": Button.PadsPageUpShift,
+    "SelectNextMixerTrackPlugin": Button.PadsPageDownShift,
 }
 
 ButtonToLedIndex = {

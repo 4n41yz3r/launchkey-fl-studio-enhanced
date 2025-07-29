@@ -13,8 +13,8 @@ class SimplePatternSelectView(View):
         fl,
         product_defs,
         *,
-        previous_button = "PatternPrevious",
-        next_button = "PatternNext",
+        previous_button = "SelectPreviousPattern",
+        next_button = "SelectNextPattern",
     ):
         super().__init__(action_dispatcher)
         self.fl = fl
