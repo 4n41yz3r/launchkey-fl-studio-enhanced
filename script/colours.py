@@ -22,7 +22,7 @@ class Colours(CustomEnum):
     exit_step_edit_latch_mode = 3
     mixer_track_audible = 25
     mixer_track_suspended = 27
-    mixer_track_record_arm_off = 7
+    mixer_track_record_arm_off = 30
     mixer_track_record_arm_on = 5
     mixer_track_mute = 3
     mixer_track_select = 21

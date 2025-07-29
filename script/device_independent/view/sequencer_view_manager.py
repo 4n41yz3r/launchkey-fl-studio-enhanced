@@ -25,7 +25,7 @@ class SequencerViewManager:
         self.action_dispatcher = action_dispatcher
         self.command_dispatcher = command_dispatcher
         self.model = model
-        self.sequencer_pad_display_view = SequencerPadDisplayView(action_dispatcher, pad_led_writer, fl, model)
+        self.sequencer_pad_display_view = SequencerPadDisplayView(action_dispatcher, pad_led_writer, fl, product_defs, model)
         self.sequencer_step_toggle_view = SequencerStepToggleView(
             action_dispatcher, command_dispatcher, fl, product_defs, model, self.sequencer_pad_display_view
         )

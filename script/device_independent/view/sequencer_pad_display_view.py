@@ -51,11 +51,12 @@ class SequencerPadDisplayView(View):
         ],
     }
 
-    def __init__(self, action_dispatcher, pad_led_writer, fl, model):
+    def __init__(self, action_dispatcher, pad_led_writer, fl, product_defs, model):
         super().__init__(action_dispatcher)
         self.pad_led_writer = pad_led_writer
         self.fl = fl
         self.model = model
+        self.product_defs = product_defs
 
     def redraw(self, *, steps=None):
         if steps is None:
@@ -126,7 +127,7 @@ class SequencerPadDisplayView(View):
 
     def _update_led_for_pad(self, pad):
         colour = self._colour_for_pad(pad)
-        self.pad_led_writer.set_pad_colour(pad, colour)
+        self.pad_led_writer.set_pad_colour(pad, colour, target=self.product_defs.Constants.LightingTargetDrumrack.value)
 
     def _update_all_leds(self):
         for pad in range(Pads.Num.value):
@@ -134,4 +135,4 @@ class SequencerPadDisplayView(View):
 
     def _turn_off_leds(self):
         for pad in range(Pads.Num.value):
-            self.pad_led_writer.set_pad_colour(pad, Colours.off)
+            self.pad_led_writer.set_pad_colour(pad, Colours.off, target=self.product_defs.Constants.LightingTargetDrumrack.value)

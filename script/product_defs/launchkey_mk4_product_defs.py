@@ -37,7 +37,7 @@ class Constants(CustomEnum):
     NotesForPadLayout = {
         PadLayout.ChannelRack: [96, 97, 98, 99, 100, 101, 102, 103, 112, 113, 114, 115, 116, 117, 118, 119],
         PadLayout.Drum: [40, 41, 42, 43, 48, 49, 50, 51, 36, 37, 38, 39, 44, 45, 46, 47],
-        PadLayout.Sequencer: [32, 33, 34, 35, 36, 37, 38, 39, 48, 49, 50, 51, 52, 53, 54, 55], # New layout for Sequencer
+        PadLayout.Sequencer: [40, 41, 42, 43, 48, 49, 50, 51, 36, 37, 38, 39, 44, 45, 46, 47],# New layout for Sequencer
     }
     PadForLayoutNote = {
         **{note: pad for pad, note in enumerate(NotesForPadLayout[PadLayout.ChannelRack])},
