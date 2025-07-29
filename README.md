@@ -1,14 +1,24 @@
 # FL Studio Novation Launchkey MK4 Enhanced MIDI Script
 
-A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers with enhanced features and display feedback.
+A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers with enhanced features including FLKey-style step sequencer, advanced parameter pagination, and comprehensive display feedback.
 
 
 ## 🚀 Features
 
-- **8-parameter pages**: Navigate through plugin parameters in organized 8-parameter chunks
+### 🥁 Step Sequencer
+- **Full FLKey-style step sequencer**: Complete sequencing workflow with visual feedback and real-time editing
+- **Multi-parameter editing**: Adjust pitch, velocity, release, fine pitch, pan, mod X/Y, and time shift per note
+- **Play cursor visualization**: Real-time playback position indicator synchronized with FL Studio
+
+### 🎛️ Plugin Parameter Control
+- **Encoder parameter pages**: Navigate through plugin parameters in multiple organized 8-parameter chunks
 - **Extended plugin support**: Pre-configured parameter mappings for popular FL Studio plugins
 - **Custom parameter mappings**: Add your own parameter definitions for any plugin
-- **Pattern navigation**: Simple pattern selection with previous/next buttons and on-screen feedback
+
+### 🎵 Pattern Navigation
+- **Simple pattern selection**: Navigate patterns with previous/next buttons and on-screen feedback
+
+### 📊 Additional Improvements
 - **Current mixer mode indicators**: Visual display of the currently selected mixer mode
 
 
@@ -33,6 +43,21 @@ A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers wit
 
 
 ## 🎮 Usage
+
+### Step Sequencer (Drum Mode)
+- **Activation**: Switch to drum mode using `Shift + Drum` button
+- **Channel navigation**: Use `Pad Up/Down` buttons to switch between channels
+- **Note toggle**: Press any pad to toggle notes on/off at the corresponding step position
+- **Play cursor**: Visual playback indicator moves across pads in sync with FL Studio playback
+- **Multi-parameter editing**: Hold any pad + turn encoders to adjust:
+  - **Pitch**: Change note pitch
+  - **Velocity**: Adjust note velocity/volume
+  - **Release**: Control note release time
+  - **Fine pitch**: Fine-tune pitch with precision
+  - **Pan**: Adjust stereo positioning
+  - **Mod X/Y**: Control modulation parameters
+  - **Time shift**: Micro-timing adjustments
+- **Multi-edit mode**: Hold a pad to enter multi-edit mode for batch parameter adjustments
 
 ### Plugin Parameter Navigation
 - **Encoder knobs**: Control parameters 1-8 on current page

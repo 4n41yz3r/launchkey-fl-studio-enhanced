@@ -32,6 +32,7 @@ class Constants(CustomEnum):
     LightingTargetCC = 0x50
     LightingTargetDrumrack = 0x60
     LightingTypeStatic = 0x00
+    LightingTypePulsing = 0x02
     LightingTypeRGB = 0x03
 
     NotesForPadLayout = {
@@ -76,14 +77,12 @@ class Button(CustomEnum):
     PadsPageDown = 33
     RightArrow = 5
     Function = 6
+    RightArrowShift = 7
+    FunctionShift = 8
     EncoderPageUpShift = 34
     EncoderPageDownShift = 35
     PadsPageUpShift = 36
     PadsPageDownShift = 37
-    RightArrowShift = 38
-    FunctionShift = 39
-    RightArrowShift = 7
-    FunctionShift = 8
 
 
 class SurfaceEvent(CustomEnum):
@@ -177,6 +176,7 @@ FunctionToButton = {
     "SelectPreviousPluginEncoderPage": Button.EncoderPageDown,
     "PatternPrevious": Button.PadsPageUpShift,
     "PatternNext": Button.PadsPageDownShift,
+    "ExitStepEditLatchMode": Button.Function,
 }
 
 ButtonToLedIndex = {
@@ -208,6 +208,10 @@ ButtonToLedIndex = {
     Button.PadsPageDown: 0x6B,
     Button.PadsPageUpShift: 0x6A,
     Button.PadsPageDownShift: 0x6B,
+    Button.RightArrow: 0x68,
+    Button.Function: 0x69,
+    Button.RightArrowShift: 0x68,
+    Button.FunctionShift: 0x69,
 }
 
 EncoderIndexToControlIndex = {
