@@ -13,7 +13,7 @@ class ChannelBankSelectedScreenView(View):
         channel_count = self.fl.channel_count()
         channel_offset_for_bank = self.model.channel_rack.active_bank * ChannelNavigationSteps.Bank.value
         first_channel = channel_offset_for_bank + 1
-        last_channel = max(0, min(channel_offset_for_bank + ChannelNavigationSteps.Bank.value, channel_count))
+        last_channel = max(0, min(channel_offset_for_bank + ChannelNavigationSteps.NumPerBank.value, channel_count))
         self.screen_writer.display_notification(
             primary_text="Channel Rack", secondary_text=f"{first_channel}-{last_channel}"
         )

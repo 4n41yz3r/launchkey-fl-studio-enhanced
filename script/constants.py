@@ -87,6 +87,7 @@ class PatternSelectBank(CustomEnum):
 
 class ChannelNavigationSteps(CustomEnum):
     Bank = 8
+    NumPerBank = 16
 
 
 class ChannelNavigationMode(CustomEnum):
