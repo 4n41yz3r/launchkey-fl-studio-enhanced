@@ -14,8 +14,6 @@ from script.device_independent.fl_gui.fl_window_manager import FLWindowManager
 from script.device_independent.view import (
     DumpScoreLogButtonView,
     MetronomeButtonView,
-    MixerBankButtonView,
-    MixerBankHighlightView,
     MixerBankScreenView,
     MixerMasterVolumeView,
     MixerTrackSelectedScreenView,
@@ -72,8 +70,6 @@ class Application:
             TransportPlayPauseButtonView(self.action_dispatcher, self.button_led_writer, self.fl, self.product_defs),
             TransportRecordButtonView(self.action_dispatcher, self.button_led_writer, self.fl, self.product_defs),
             TransportStopButtonView(self.action_dispatcher, self.fl, self.product_defs, self.button_led_writer),
-            MixerBankButtonView(self.action_dispatcher, self.button_led_writer, self.fl, self.product_defs, self.model),
-            MixerBankHighlightView(self.action_dispatcher, self.fl, self.model),
             MixerBankScreenView(self.action_dispatcher, self.screen_writer, self.model),
             MixerMasterVolumeView(self.action_dispatcher, self.fl),
             MixerVolumeScreenView(self.action_dispatcher, self.screen_writer, self.fl),

@@ -7,6 +7,8 @@ from script.device_independent.view import (
     ChannelRackDrumPadsView,
     MixerTrackPluginSelectView,
     MixerTrackPluginSelectedScreenView,
+    MixerBankButtonView,
+    MixerBankHighlightView,
 )
 from util.mapped_pad_led_writer import MappedPadLedWriter
 
@@ -38,6 +40,8 @@ class ChannelRackPadLayoutManager:
             ChannelBankSelectedScreenView(action_dispatcher, screen_writer, fl, model),
             MixerTrackPluginSelectView(action_dispatcher, button_led_writer, fl, product_defs),
             MixerTrackPluginSelectedScreenView(action_dispatcher, screen_writer, fl),
+            MixerBankButtonView(self.action_dispatcher, button_led_writer, self.fl, product_defs, self.model),
+            MixerBankHighlightView(self.action_dispatcher, self.fl, self.model),
         }
 
     def show(self):

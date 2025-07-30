@@ -46,7 +46,7 @@ A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers wit
 ### Step Sequencer (Drum Mode)
 - **Activation**: Switch to drum mode using `Shift + Drum` button
 - **Channel navigation**: Use `Pad Up/Down` buttons to switch between channels
-- **Sequencer Bank selection**: Use `Right Arrow/Function` buttons to navigate between sequencer banks (left/right). 
+- **Sequencer Bank selection**: Use `Track Left/Right` buttons to navigate between sequencer banks.
 - **Pattern selection**: Use `Shift + Pad Up/Down` buttons to navigate between patterns
 - **Note toggle**: Press any pad to toggle notes on/off at the corresponding step position
 - **Play cursor**: Visual playback indicator moves across pads in sync with FL Studio playback
@@ -58,7 +58,7 @@ A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers wit
   - **Pan**: Adjust stereo positioning
   - **Mod X/Y**: Control modulation parameters
   - **Time shift**: Micro-timing adjustments
-- **Multi-edit mode**: Hold a pad for 2 seconds to enter multi-edit mode for batch parameter adjustments:
+- **Multi-edit mode**: Hold any pad for 1 second to enter multi-edit mode for batch parameter adjustments:
   - **Select**: Press any number of pads to toggle note selection on/off
   - **Update**: Turn encoders to adjust the selected notes' parameters simultaneously
   - **Exit**: Pres `Function` button to exit multi-edit mode
