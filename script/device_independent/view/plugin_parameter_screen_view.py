@@ -97,7 +97,9 @@ class PluginParameterScreenView(View):
 
     def _get_selected_name(self):
         if self.fl.get_selected_plugin_type() == PluginType.Effect:
-            return self.fl.get_mixer_track_name(self.fl.get_selected_mixer_track())
+            mixer_track_name = self.fl.get_mixer_track_name(self.fl.get_selected_mixer_track())
+            plugin_name = self.fl.get_selected_plugin()
+            return plugin_name if plugin_name else mixer_track_name
         selected_channel = self.fl.selected_channel()
         if selected_channel is None:
             return None
