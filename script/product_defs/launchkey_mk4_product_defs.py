@@ -181,6 +181,8 @@ FunctionToButton = {
     "SequencerStepsPageLeft": Button.Function,
     "SelectPreviousMixerTrackPlugin": Button.PadsPageUpShift,
     "SelectNextMixerTrackPlugin": Button.PadsPageDownShift,
+    "SelectPreviousPreset": Button.EncoderPageUpShift,
+    "SelectNextPreset": Button.EncoderPageDownShift,
 }
 
 ButtonToLedIndex = {

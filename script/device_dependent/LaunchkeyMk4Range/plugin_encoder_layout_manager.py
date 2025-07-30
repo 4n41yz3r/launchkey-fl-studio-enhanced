@@ -7,6 +7,8 @@ from script.device_independent.view import (
     PluginParameterPreviewView,
     PluginParameterScreenView,
     PluginParameterView,
+    PresetButtonScreenView,
+    PresetButtonView
 )
 from script.plugin import plugin_parameter_mappings
 from util.control_to_index import make_control_to_index
@@ -61,7 +63,9 @@ class PluginEncoderLayoutManager(PagedLayoutManager):
                     plugin_parameter_mappings,
                     control_to_index=self.control_to_index,
                     parameter_page=page
-                )
+                ),
+                PresetButtonScreenView(action_dispatcher, self.screen_writer, self.fl),
+                PresetButtonView(action_dispatcher, self.button_led_writer, self.fl, product_defs),
             ],
         )
 

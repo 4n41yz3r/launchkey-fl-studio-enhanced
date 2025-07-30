@@ -12,6 +12,7 @@ A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers wit
 
 ### 🎛️ Plugin Parameter Control
 - **Encoder parameter pages**: Navigate through plugin parameters in multiple organized 8-parameter chunks
+- **Plugin preset navigation**: Browse through plugin presets with dedicated encoder controls (FL Studio plugins only)
 - **Extended plugin support**: Pre-configured parameter mappings for popular FL Studio plugins
 - **Custom parameter mappings**: Add your own parameter definitions for any plugin
 
@@ -65,6 +66,7 @@ A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers wit
 ### Plugin Parameter Navigation
 - **Encoder knobs**: Control parameters 1-8 on current page
 - **Parameter Page navigation**: Navigate between parameter pages using `Encoder Up/Down` buttons
+- **Plugin Preset navigation**: Navigate through plugin presets using `Shift + Encoder Up/Down` buttons (Plugin Encoder mode)
 - **Mixer Track Plugin selection**: Use `Shift + Pad Up/Down` buttons to switch between mixer track plugins in (DAW Pad Mode)
 - **Idle screen display**: Shows parameter names with smart truncation
 - **Real-time feedback**: Parameter values/display update in real-time
