@@ -29,7 +29,6 @@ from script.device_independent.view import (
     TransportRecordButtonView,
     TransportStopButtonView,
     UndoButtonView,
-    SimplePatternSelectView,
     SequencerStepEditScreenView,
     ChannelSelectedScreenView,
 )
@@ -87,7 +86,6 @@ class Application:
             UndoButtonView(self.action_dispatcher, self.button_led_writer, self.fl, self.product_defs),
             RedoButtonView(self.action_dispatcher, self.button_led_writer, self.fl, self.product_defs),
             ShowHighlightsView(self.action_dispatcher, self.product_defs, self.model),
-            SimplePatternSelectView(self.action_dispatcher, self.screen_writer, self.button_led_writer, self.fl, self.product_defs),
             SequencerStepEditScreenView(self.action_dispatcher, self.screen_writer, self.fl),
             ChannelSelectedScreenView(self.action_dispatcher, self.screen_writer, self.fl),
         }

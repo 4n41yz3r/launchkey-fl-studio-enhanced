@@ -9,6 +9,7 @@ from script.device_independent.view import (
     SequencerPageView,
     SequencerViewManager,
     PatternSelectScreenView,
+    SimplePatternSelectView,
 )
 from util.mapped_pad_led_writer import MappedPadLedWriter
 
@@ -39,6 +40,7 @@ class SequencerPadLayoutManager:
             PresetButtonScreenView(action_dispatcher, screen_writer, fl),
             PresetButtonView(action_dispatcher, button_led_writer, fl, product_defs),
             PatternSelectScreenView(action_dispatcher, fl, screen_writer),
+            SimplePatternSelectView(action_dispatcher, screen_writer, button_led_writer, fl, product_defs),
         }
         self.channel_select_view = ChannelSelectView(action_dispatcher, button_led_writer, fl, product_defs)
         self.exit_step_edit_latch_mode_view = ExitStepEditLatchModeView(

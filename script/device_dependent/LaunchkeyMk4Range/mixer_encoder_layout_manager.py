@@ -88,7 +88,7 @@ class MixerEncoderLayoutManager(PagedLayoutManager):
                 ],
             ),
             PagedLayoutManager.Layout(
-                layout_id=MixerEncoderMode.MixerEQ,
+                layout_id=MixerEncoderMode.MixerEQ.value,
                 notification_primary="Mixer",
                 notification_secondary="Mixer EQ",
                 views=[
