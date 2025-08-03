@@ -1,6 +1,6 @@
-# FL Studio Novation Launchkey MK4 Enhanced MIDI Script
+# FL Studio Novation Launchkey MK4 Advanced MIDI Script
 
-A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers with enhanced features including FLKey-style step sequencer, advanced parameter pagination, and comprehensive display feedback.
+An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers that provides deep DAW integraion including FLKey-style step sequencer, encoder parameter pagination, plugin preset switching, comprehensive display feedback, and much more.
 
 
 ## 🚀 Features
@@ -44,7 +44,7 @@ A custom FL Studio MIDI script for Novation Launchkey MK4 series controllers wit
 ## 🎮 Usage
 
 ### Step Sequencer (Drum Mode)
-- **Activation**: Switch to drum mode using `Shift + Drum` button
+- **Activation**: Switch to drum mode using `Shift + Drum` pad
 - **Channel navigation**: Use `Pad Up/Down` buttons to switch between channels
 - **Sequencer Bank selection**: Use `Track Left/Right` buttons to navigate between sequencer banks.
 - **Pattern selection**: Use `Shift + Pad Up/Down` buttons to navigate between patterns

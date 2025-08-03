@@ -73,7 +73,6 @@ class LaunchkeyMk4SurfaceActionGenerator:
             KeyboardControllerCommonEncoderActionGenerator(product_defs),
             KeyboardControllerCommonFaderActionGenerator(product_defs),
             KeyboardControllerCommonFaderLayoutActionGenerator(product_defs),
-            KeyboardControllerCommonFaderActionGenerator(product_defs),
             KeyboardControllerCommonPadActionGenerator(product_defs),
             KeyboardControllerCommonPadLayoutActionGenerator(product_defs),
             KeyboardControllerCommonEncoderLayoutActionGenerator(product_defs),
