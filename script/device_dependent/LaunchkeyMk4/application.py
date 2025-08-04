@@ -1,4 +1,4 @@
-from script.device_dependent.LaunchkeyMk4.volume_fader_layout_manager import VolumeFaderLayoutManager
+from script.device_dependent.LaunchkeyMk4.multi_mode_fader_layout_manager import MultiModeFaderLayoutManager
 from script.device_dependent.LaunchkeyMk4Range import (
     ChannelRackPadLayoutManager,
     DrumPadLayoutManager,
@@ -171,7 +171,7 @@ class Application:
 
     def _create_fader_layout_manager(self, layout):
         if layout == self.product_defs.FaderLayout.Volume:
-            return VolumeFaderLayoutManager(
+            return MultiModeFaderLayoutManager(
                 self.action_dispatcher,
                 self.command_dispatcher,
                 self.fl,

@@ -11,6 +11,7 @@ class Colours(CustomEnum):
     channel_rack_pad_pressed = 21
     channel_rack_pan = 255, 0, 0
     channel_select = 21
+    channel_mute_mode = 13
     eq_parameter_gain = 106, 0, 192
     eq_parameter_frequency = 182, 122, 255
     fpc_orange = 108
@@ -22,11 +23,13 @@ class Colours(CustomEnum):
     exit_step_edit_latch_mode = 3
     mixer_track_audible = 25
     mixer_track_suspended = 27
-    mixer_track_record_arm_off = 30
+    mixer_track_record_arm_off = 7
     mixer_track_record_arm_on = 5
     mixer_track_mute = 3
     mixer_track_select = 21
     mixer_track_pan = 255, 0, 0
+    mixer_track_mute_mode = 29
+    mixer_track_record_arm_mode = 5
     pattern_selected = 3
     plugin_parameter = 0, 80, 255
     transport_play_on = 21

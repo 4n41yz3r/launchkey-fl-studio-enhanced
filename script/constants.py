@@ -46,6 +46,7 @@ class Faders(CustomEnum):
 class FaderArmMuteMode(CustomEnum):
     Arm = 0
     Mute = 1
+    ChannelVolume = 2
 
 
 class FaderSoloArmMode(CustomEnum):

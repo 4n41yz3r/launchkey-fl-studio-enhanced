@@ -69,7 +69,7 @@ class MixerMuteView(View):
     def update_leds(self):
         self.turn_off_leds()
         arm_select_button = self.product_defs.FunctionToButton.get("ArmSelect")
-        self.button_led_writer.set_button_colour(arm_select_button, Colours.mixer_track_mute)
+        self.button_led_writer.set_button_colour(arm_select_button, Colours.mixer_track_mute_mode)
         for button, track_index in self.button_to_track_index.items():
             colour = self.get_colour_for_track(track_index)
             self.button_led_writer.set_button_colour(button, colour, lighting_type=LedLightingType.RGB)

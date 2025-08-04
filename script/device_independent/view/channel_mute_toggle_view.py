@@ -73,7 +73,7 @@ class ChannelMuteToggleView(View):
     def update_leds(self):
         self.turn_off_leds()
         mute_button = self.product_defs.FunctionToButton.get(self.mute_function)
-        self.button_led_writer.set_button_colour(mute_button, Colours.button_toggle_on)
+        self.button_led_writer.set_button_colour(mute_button, Colours.channel_mute_mode)
         for button, channel_index in self.button_to_channel_index.items():
             colour = self.get_colour_for_channel(channel_index)
             self.button_led_writer.set_button_colour(button, colour, lighting_type=LedLightingType.RGB)
