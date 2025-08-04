@@ -1,10 +1,10 @@
-from script.action_generators.surface_action_generator.surface_actions import ArmSelectStateChangedAction
-from script.constants import ChannelNavigationMode, FaderArmMuteMode, Faders
+from script.action_generators.surface_action_generator.surface_actions import MultiModeFaderStateChangedAction
+from script.constants import ChannelNavigationMode, FaderMultiMode, Faders
 from script.device_independent.view import (
     ChannelMuteToggleView,
     ChannelRackVolumeScreenView,
     ChannelRackVolumeView,
-    FaderModeToggleScreenView,
+    FaderMultiModeToggleScreenView,
     MixerMuteView,
     MixerTrackRecordArmToggleView,
     MixerVolumeView,
@@ -37,7 +37,7 @@ class MultiModeFaderLayoutManager:
         control_to_index = make_control_to_index(Faders.FirstControlIndex.value, Faders.NumRegularFaders.value)
         
         # Common views
-        self.fader_mode_toggle_screen_view = FaderModeToggleScreenView(action_dispatcher, screen_writer)
+        self.fader_mode_toggle_screen_view = FaderMultiModeToggleScreenView(action_dispatcher, screen_writer)
 
         # Mixer-related views
         self.mixer_fader_view = MixerVolumeView(action_dispatcher, fl, model, control_to_index=control_to_index)
@@ -54,12 +54,12 @@ class MultiModeFaderLayoutManager:
 
     @property
     def current_mode(self):
-        return getattr(self.model, 'mixer_arm_mute_mode', FaderArmMuteMode.Arm)
+        return getattr(self.model, 'mixer_arm_mute_mode', FaderMultiMode.MixerTrackVolumeArm)
 
     @property
     def views(self):
         """Return the appropriate views based on current mode"""
-        if self.current_mode == FaderArmMuteMode.ChannelVolume:
+        if self.current_mode == FaderMultiMode.ChannelVolumeMute:
             # Channel volume mode: faders control channels, buttons toggle channel mute
             return {
                 self.channel_fader_view,
@@ -79,7 +79,7 @@ class MultiModeFaderLayoutManager:
 
     @property
     def is_mixer_record_arm_view_enabled(self):
-        return self.current_mode == FaderArmMuteMode.Arm
+        return self.current_mode == FaderMultiMode.MixerTrackVolumeArm
 
     def show(self):
         self.action_dispatcher.subscribe(self)
@@ -94,7 +94,7 @@ class MultiModeFaderLayoutManager:
 
     def focus_windows(self):
         self.fl_window_manager.hide_last_focused_plugin_window()
-        if self.current_mode == FaderArmMuteMode.ChannelVolume:
+        if self.current_mode == FaderMultiMode.ChannelVolumeMute:
             self.fl_window_manager.focus_channel_window()
         else:
             self.fl_window_manager.focus_mixer_window()
@@ -106,12 +106,12 @@ class MultiModeFaderLayoutManager:
     def _cycle_fader_mode(self):
         self.hide()
         
-        if self.current_mode == FaderArmMuteMode.Arm:
-            new_mode = FaderArmMuteMode.ChannelVolume
-        elif self.current_mode == FaderArmMuteMode.ChannelVolume:
-            new_mode = FaderArmMuteMode.Mute
+        if self.current_mode == FaderMultiMode.MixerTrackVolumeArm:
+            new_mode = FaderMultiMode.ChannelVolumeMute
+        elif self.current_mode == FaderMultiMode.ChannelVolumeMute:
+            new_mode = FaderMultiMode.MixerTrackVolumeMute
         else:  # Mute
-            new_mode = FaderArmMuteMode.Arm
+            new_mode = FaderMultiMode.MixerTrackVolumeArm
         
         # Update the model
         self.model.mixer_arm_mute_mode = new_mode
@@ -121,4 +121,4 @@ class MultiModeFaderLayoutManager:
         self.focus_windows()
         
         # Dispatch the mode change action
-        self.action_dispatcher.dispatch(ArmSelectStateChangedAction(mode=new_mode))
+        self.action_dispatcher.dispatch(MultiModeFaderStateChangedAction(mode=new_mode))

@@ -16,6 +16,10 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
 - **Extended plugin support**: Pre-configured parameter mappings for popular FL Studio plugins
 - **Custom parameter mappings**: Add your own parameter definitions for any plugin
 
+### 🎚️ Multi-Mode Fader Control
+- **Three fader modes**: Cycle between Mixer and Channel control modes using the ArmSelect button
+- **Channel Volume mode**: Faders control channel rack volume levels, fader buttons control channel mute
+
 ### 📊 Additional Improvements
 - **Current mixer mode indicators**: Visual display of the currently selected mixer mode
 - **Pattern selection**: Navigate patterns with previous/next buttons and on-screen feedback (Sequencer/Drum pad mode)
@@ -71,9 +75,23 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
 - **Idle screen display**: Shows parameter names with smart truncation
 - **Real-time feedback**: Parameter values/display update in real-time
 
+### Multi-Mode Fader Control (Launchkey MK4 49/61 only)
+- **Mode cycling**: Press the `ArmSelect` button to cycle between multiple fader control modes:
+  - Mixer Track Volume / Arm
+  - Mixer Track Volume / Mute
+  - Channel Volume / Mute
+- **Channel Volume / Mute mode**:
+  - Faders control channel rack volume levels independent of mixer tracks
+  - Buttons control channel mute states with LED feedback corresponding to the channel color
+  - Controls the currenty selected channel bank
+  - The 9th fader controls master mixer volume
+- **Visual feedback**:
+  - Screen displays current mode when switching
+  - The `ArmSelect` button's color indicates the sellected mode
+  - Automatically focuses the appropriate FL Studio window
+
 ### Mixer Mode Features
 - **Current mode indicators**: Clear display of current mixer mode
-
 
 ### Plugin Parameter Mappings
 The script includes pre-configured parameter mappings for popular FL Studio plugins, with support for multiple pages of parameters per plugin. Users can easily extend this by adding their own custom parameter definitions.

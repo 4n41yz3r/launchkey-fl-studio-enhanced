@@ -1,6 +1,11 @@
-from script.constants import FaderArmMuteMode, FaderMuteSelectMode, FaderSoloArmMode
+from script.constants import FaderArmMuteMode, FaderMultiMode, FaderMuteSelectMode, FaderSoloArmMode
 from util.custom_enum import CustomEnum
 from util.plain_data import PlainData
+
+
+@PlainData
+class MultiModeFaderStateChangedAction:
+    mode: FaderMultiMode
 
 
 @PlainData

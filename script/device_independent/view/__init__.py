@@ -114,7 +114,7 @@ from .transport_zoom_preview_view import TransportZoomPreviewView
 from .transport_zoom_screen_view import TransportZoomScreenView
 from .transport_zoom_view import TransportZoomView
 from .undo_button_view import UndoButtonView
-from .fader_mode_toggle_screen_view import FaderModeToggleScreenView
+from .fader_multi_mode_toggle_screen_view import FaderMultiModeToggleScreenView
 
 __all__ = [
     "ButtonFunctionScreenView",
@@ -234,5 +234,5 @@ __all__ = [
     "TransportZoomScreenView",
     "TransportZoomView",
     "UndoButtonView",
-    "FaderModeToggleScreenView"
+    "FaderMultiModeToggleScreenView"
 ]

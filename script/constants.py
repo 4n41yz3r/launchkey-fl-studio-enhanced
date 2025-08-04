@@ -43,10 +43,15 @@ class Faders(CustomEnum):
     Num = 9
 
 
+class FaderMultiMode(CustomEnum):
+    MixerTrackVolumeArm = 0
+    MixerTrackVolumeMute = 1
+    ChannelVolumeMute = 2
+
+
 class FaderArmMuteMode(CustomEnum):
     Arm = 0
     Mute = 1
-    ChannelVolume = 2
 
 
 class FaderSoloArmMode(CustomEnum):
