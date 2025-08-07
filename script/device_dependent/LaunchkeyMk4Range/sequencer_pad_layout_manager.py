@@ -57,8 +57,6 @@ class SequencerPadLayoutManager:
         self.fl_window_manager = fl_window_manager
 
     def show(self):
-        self.model.channel_rack.navigation_mode = ChannelNavigationMode.Single
-        self.action_dispatcher.dispatch(ChannelRackNavigationModeChangedAction())
         self.action_dispatcher.subscribe(self)
 
         if self.fl.is_any_channel_selected():
