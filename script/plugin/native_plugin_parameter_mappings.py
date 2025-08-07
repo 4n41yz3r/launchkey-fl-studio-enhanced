@@ -86,13 +86,25 @@ native_plugin_parameter_mappings = {
     "Layer": [
         PluginParameter(
             index=ChannelParameter.BipolarFilterCutoff.value,
-            name="Filter Cutoff",
+            name="Modulation X",
             parameter_type=PluginParameterType.Channel,
             deadzone_centre=0.5,
         ),
         PluginParameter(
             index=ChannelParameter.BipolarFilterResonance.value,
-            name="Filter Resonance",
+            name="Modulation Y",
+            parameter_type=PluginParameterType.Channel,
+            deadzone_centre=0.5,
+        ),
+        PluginParameter(
+            index=ChannelParameter.BipolarPan.value,
+            name="Pan",
+            parameter_type=PluginParameterType.Channel,
+            deadzone_centre=0.5,
+        ),
+        PluginParameter(
+            index=ChannelParameter.BipolarVolume.value,
+            name="Volume",
             parameter_type=PluginParameterType.Channel,
             deadzone_centre=0.5,
         ),
