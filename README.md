@@ -18,12 +18,13 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
 
 ### 🎚️ Multi-Mode Fader Control
 - **Three fader modes**: Cycle between Mixer and Channel control modes using the ArmSelect button
-- **Channel Volume mode**: Faders control channel rack volume levels, fader buttons control channel mute
+- **New Channel Volume fader mode**: Faders control channel rack volume levels, fader buttons control channel mute
 
 ### 📊 Additional Improvements
-- **Current mixer mode indicators**: Visual display of the currently selected mixer mode
-- **Pattern selection**: Navigate patterns with previous/next buttons and on-screen feedback (Sequencer/Drum pad mode)
-- **Mixer track plugin selection**: Switch between mixer track plugins using navigation buttons (DAW pad mode)
+- **Current mixer encoder mode indicators**: Visual display of the currently selected mixer mode
+- **New Plugin Mix Level encoder mode**: Control mix level of the currently selected mixer track plugins using encoders
+- **Pattern selection**: Navigate patterns with previous/next buttons and on-screen feedback in Sequencer/Drum pad mode
+- **Mixer track plugin selection**: Switch between mixer track plugins using navigation buttons in DAW pad mode
 
 ## 📋 Supported Hardware
 
@@ -47,7 +48,7 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
 
 ## 🎮 Usage
 
-### Step Sequencer (Drum Mode)
+### Step Sequencer (Drum Pad Mode)
 - **Activation**: Switch to drum mode using `Shift + Drum` pad
 - **Channel navigation**: Use `Pad Up/Down` buttons to switch between channels
 - **Sequencer Bank selection**: Use `Track Left/Right` buttons to navigate between sequencer banks.
@@ -67,13 +68,12 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
   - **Update**: Turn encoders to adjust the selected notes' parameters simultaneously
   - **Exit**: Pres `Function` button to exit multi-edit mode
 
-### Plugin Parameter Navigation
-- **Encoder knobs**: Control parameters 1-8 on current page
-- **Parameter Page navigation**: Navigate between parameter pages using `Encoder Up/Down` buttons
-- **Plugin Preset navigation**: Navigate through plugin presets using `Shift + Encoder Up/Down` buttons (Plugin Encoder mode)
+### Plugin Encoder Parameter Control
+- **Encoder knobs**: Control plugin parameters 1-8 on current page
+- **Parameter Page navigation**: Navigate between parameter pages using `Encoder Up/Down` buttons (Plugin Encoder mode)
+- **Preset navigation**: Navigate through plugin presets using `Shift + Encoder Up/Down` buttons (Plugin Encoder mode)
 - **Mixer Track Plugin selection**: Use `Shift + Pad Up/Down` buttons to switch between mixer track plugins in (DAW Pad Mode)
 - **Idle screen display**: Shows parameter names with smart truncation
-- **Real-time feedback**: Parameter values/display update in real-time
 
 ### Multi-Mode Fader Control (Launchkey MK4 49/61 only)
 - **Mode cycling**: Press the `ArmSelect` button to cycle between multiple fader control modes:
@@ -90,8 +90,13 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
   - The `ArmSelect` button's color indicates the sellected mode
   - Automatically focuses the appropriate FL Studio window
 
-### Mixer Mode Features
+### Mixer Encoder Mode Features
 - **Current mode indicators**: Clear display of current mixer mode
+- **New Plugin Mix Level control**: Dedicated encoder mode for controlling mixer track plugin mix levels
+  - **Access**: Navigate to "Plugin Mix" encoder mode using encoder navigation buttons
+  - **Control**: Each encoder (1-8) controls the mix level of plugin slots 0-7 on the selected mixer track
+  - **Display**: Shows track name, plugin slot number, and mix percentage (e.g., "Kick", "Slot 1 Mix", "75%")
+  - **Preview**: Touch encoders with shift to see current mix levels without changing them
 
 ### Plugin Parameter Mappings
 The script includes pre-configured parameter mappings for popular FL Studio plugins, with support for multiple pages of parameters per plugin. Users can easily extend this by adding their own custom parameter definitions.

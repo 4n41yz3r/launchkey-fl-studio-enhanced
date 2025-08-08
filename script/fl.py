@@ -282,6 +282,24 @@ class FL:
 
     def is_mixer_track_selected(self, track_index):
         return mixer.isTrackSelected(track_index)
+    
+    def get_mixer_track_plugin_mix_level(self, track, plugin_index):
+        """
+        Get the mix level of a plugin on a mixer track.
+        :param track: The index of the mixer track.
+        :param plugin_index: The index of the plugin slot (0-9).
+        :return: Mix level as a float between 0.0 and 1.0.
+        """
+        return mixer.getPluginMixLevel(track, plugin_index)
+    
+    def set_mixer_track_plugin_mix_level(self, track, plugin_index, level):
+        """
+        Set the mix level of a plugin on a mixer track.
+        :param track: The index of the mixer track.
+        :param plugin_index: The index of the plugin slot (0-9).
+        :param level: Mix level as a float between 0.0 and 1.0.
+        """
+        mixer.setPluginMixLevel(track, plugin_index, level)
 
     def get_channel_volume(self, channel):
         return channels.getChannelVolume(channel)
@@ -402,6 +420,16 @@ class FL:
             return "Layer"
         if channel_type == ChannelType.Generator and plugins.isValid(group_channel):
             return plugins.getPluginName(group_channel)
+
+        return None
+
+    def get_plugin_for_selected_mixer_track(self, slot_index):
+        selected_mixer_track = self.get_selected_mixer_track()
+        if selected_mixer_track is None or slot_index < 0:
+            return None
+
+        if plugins.isValid(selected_mixer_track, slot_index):
+            return plugins.getPluginName(selected_mixer_track, slot_index)
 
         return None
 

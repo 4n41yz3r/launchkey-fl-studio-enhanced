@@ -53,6 +53,9 @@ from .mixer_track_eq_preview_view import MixerTrackEqPreviewView
 from .mixer_track_eq_screen_view import MixerTrackEqScreenView
 from .mixer_track_eq_view import MixerTrackEqView
 from .mixer_track_mute_toggle_view import MixerTrackMuteToggleView
+from .mixer_track_plugin_mix_preview_view import MixerTrackPluginMixPreviewView
+from .mixer_track_plugin_mix_screen_view import MixerTrackPluginMixScreenView
+from .mixer_track_plugin_mix_view import MixerTrackPluginMixView
 from .mixer_track_plugin_select_view import MixerTrackPluginSelectView
 from .mixer_track_plugin_selected_screen_view import MixerTrackPluginSelectedScreenView
 from .mixer_track_record_arm_toggle_view import MixerTrackRecordArmToggleView
@@ -174,6 +177,9 @@ __all__ = [
     "MixerTrackEqScreenView",
     "MixerTrackEqView",
     "MixerTrackMuteToggleView",
+    "MixerTrackPluginMixPreviewView",
+    "MixerTrackPluginMixScreenView",
+    "MixerTrackPluginMixView",
     "MixerTrackPluginSelectView",
     "MixerTrackPluginSelectedScreenView",
     "MixerTrackRecordArmToggleView",

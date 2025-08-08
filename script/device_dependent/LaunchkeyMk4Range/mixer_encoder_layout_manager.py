@@ -14,6 +14,9 @@ from script.device_independent.view import (
     MixerTrackEqPreviewView,
     MixerTrackEqScreenView,
     MixerTrackEqView,
+    MixerTrackPluginMixPreviewView,
+    MixerTrackPluginMixScreenView,
+    MixerTrackPluginMixView,
     MixerVolumePreviewView,
     MixerVolumeScreenView,
     MixerVolumeView,
@@ -96,6 +99,17 @@ class MixerEncoderLayoutManager(PagedLayoutManager):
                     MixerTrackEqView(action_dispatcher, fl, control_to_index=control_to_index),
                     MixerTrackEqScreenView(action_dispatcher, screen_writer, fl),
                     MixerTrackEqPreviewView(action_dispatcher),
+                ],
+            ),
+            PagedLayoutManager.Layout(
+                layout_id=MixerEncoderMode.MixerTrackPluginMix.value,
+                notification_primary="Mixer",
+                notification_secondary="Plugin Mix",
+                views=[
+                    MixerIdleScreenView(action_dispatcher, fl, screen_writer, "Plugin Mix"),
+                    MixerTrackPluginMixView(action_dispatcher, fl, model, control_to_index=control_to_index),
+                    MixerTrackPluginMixScreenView(action_dispatcher, screen_writer, fl),
+                    MixerTrackPluginMixPreviewView(action_dispatcher, fl),
                 ],
             ),
         ]

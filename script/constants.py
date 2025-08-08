@@ -217,6 +217,7 @@ class MixerEncoderMode(CustomEnum):
     MixerVolume = 2
     MixerPan = 3
     MixerEQ = 4
+    MixerTrackPluginMix = 5
 
 
 class Zoom(CustomEnum):

@@ -101,6 +101,20 @@ class MixerTrackVolumePreviewedAction:
 
 
 @PlainData
+class MixerTrackPluginMixChangedAction:
+    track: int
+    plugin_index: int
+    control: int
+
+
+@PlainData
+class MixerTrackPluginMixPreviewedAction:
+    track: int
+    plugin_index: int
+    control: int
+
+
+@PlainData
 class MixerTrackPanChangedAction:
     track: int
     control: int
