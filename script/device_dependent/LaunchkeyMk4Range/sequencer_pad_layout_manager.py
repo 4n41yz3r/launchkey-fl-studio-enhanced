@@ -1,8 +1,8 @@
 from script.actions import ChannelRackNavigationModeChangedAction
-from script.constants import ChannelNavigationMode, SequencerStepEditState
+from script.constants import ChannelNavigationMode, Encoders, SequencerStepEditState
 from script.device_independent.view import (
     ChannelSelectStepsHighlightView,
-    ChannelSelectView,
+    ChannelSelectAdvancedView,
     ExitStepEditLatchModeView,
     PresetButtonScreenView,
     PresetButtonView,
@@ -11,6 +11,7 @@ from script.device_independent.view import (
     PatternSelectScreenView,
     SimplePatternSelectView,
 )
+from script.device_independent.view.channel_bank_names_highlight_view import ChannelBankNamesHighlightView
 from util.mapped_pad_led_writer import MappedPadLedWriter
 
 
@@ -41,8 +42,9 @@ class SequencerPadLayoutManager:
             PresetButtonView(action_dispatcher, button_led_writer, fl, product_defs),
             PatternSelectScreenView(action_dispatcher, fl, screen_writer),
             SimplePatternSelectView(action_dispatcher, screen_writer, button_led_writer, fl, product_defs),
+            ChannelBankNamesHighlightView(action_dispatcher, fl, model, num_channels=Encoders.Num.value),
         }
-        self.channel_select_view = ChannelSelectView(action_dispatcher, button_led_writer, fl, product_defs)
+        self.channel_select_view = ChannelSelectAdvancedView(action_dispatcher, button_led_writer, fl, product_defs, model, bank_size=Encoders.Num.value)
         self.exit_step_edit_latch_mode_view = ExitStepEditLatchModeView(
             action_dispatcher, command_dispatcher, button_led_writer, product_defs
         )
