@@ -55,7 +55,7 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
 - **Pattern selection**: Use `Shift + Pad Up/Down` buttons to navigate between patterns
 - **Note toggle**: Press any pad to toggle notes on/off at the corresponding step position
 - **Play cursor**: Visual playback indicator moves across pads in sync with FL Studio playback
-- **Multi-parameter editing**: Hold any pad + turn encoders to adjust:
+- **Note parameter editing**: Hold any pad + turn encoders to adjust:
   - **Pitch**: Change note pitch
   - **Velocity**: Adjust note velocity/volume
   - **Release**: Control note release time
