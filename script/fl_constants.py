@@ -73,6 +73,8 @@ class GlobalTransportCommand(CustomEnum):
     TapTempoEvent = 106
     Metronome = 110
     LoopRecord = 113
+    WaitForInput = 111
+    CountDown = 115
 
 
 class LoopMode(CustomEnum):
