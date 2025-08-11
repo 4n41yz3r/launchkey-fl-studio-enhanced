@@ -13,6 +13,7 @@ from .keyboard_controller_common_pad_layout_action_generator import KeyboardCont
 from .keyboard_controller_common_pot_action_generator import KeyboardControllerCommonPotActionGenerator
 from .keyboard_controller_common_pot_layout_action_generator import KeyboardControllerCommonPotLayoutActionGenerator
 from .keyboard_controller_common_scale_action_generator import KeyboardControllerCommonScaleActionGenerator
+from .keyboard_controller_common_note_action_generator import KeyboardControllerCommonNoteActionGenerator
 
 __all__ = [
     "KeyboardControllerCommonButtonActionGenerator",
@@ -26,4 +27,5 @@ __all__ = [
     "KeyboardControllerCommonScaleActionGenerator",
     "KeyboardControllerCommonFaderActionGenerator",
     "KeyboardControllerCommonFaderLayoutActionGenerator",
+    "KeyboardControllerCommonNoteActionGenerator",
 ]

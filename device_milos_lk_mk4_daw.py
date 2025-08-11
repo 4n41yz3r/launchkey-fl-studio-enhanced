@@ -1,5 +1,6 @@
 # name=Milos Launchkey MK4 DAW
 # supportedHardwareIds=00 20 29 46 01 00 01,00 20 29 45 01 00 01,00 20 29 44 01 00 01,00 20 29 43 01 00 01
+# receiveFrom=Milos Launchkey MK4 MIDI
 from script.constants import DeviceId
 from script.device_adapters.fl_to_application_adapter import (
     add_fl_callbacks_to_namespace,

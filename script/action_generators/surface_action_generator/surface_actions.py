@@ -109,3 +109,18 @@ class ScaleRootChangedAction:
 @PlainData
 class SurfaceInteractionDiscardedAction:
     discarded_action: PlainData
+
+
+@PlainData
+class NoteOnAction:
+    note: int
+    velocity: int
+
+@PlainData
+class NoteOffAction:
+    note: int
+    velocity: int
+
+@PlainData
+class PitchBendAction:
+    value: int

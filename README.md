@@ -8,6 +8,7 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
 ### 🥁 Step Sequencer
 - **Full FLKey-style step sequencer**: Complete sequencing workflow with visual feedback and real-time editing
 - **Multi-parameter editing**: Adjust pitch, velocity, release, fine pitch, pan, mod X/Y, and time shift per note
+- **Melodic sequencing support**: Hold keyboard keys while pressing pads to create pitched step notes for melodies and basslines
 - **Play cursor visualization**: Real-time playback position indicator synchronized with FL Studio
 
 ### 🎛️ Plugin Parameter Control
@@ -54,6 +55,9 @@ An advanced FL Studio MIDI script for Novation Launchkey MK4 series controllers 
 - **Sequencer Bank selection**: Use `Track Left/Right` buttons to navigate between sequencer banks.
 - **Pattern selection**: Use `Shift + Pad Up/Down` buttons to navigate between patterns
 - **Note toggle**: Press any pad to toggle notes on/off at the corresponding step position
+- **Melodic sequencing**: Hold any key on the keyboard while pressing a pad to create a step note with that specific pitch
+  - Perfect for creating melodies, basslines, and pitched sequences
+  - Due to FL Studio limitations, only single notes are supported (no chords)
 - **Play cursor**: Visual playback indicator moves across pads in sync with FL Studio playback
 - **Note parameter editing**: Hold any pad + turn encoders to adjust:
   - **Pitch**: Change note pitch

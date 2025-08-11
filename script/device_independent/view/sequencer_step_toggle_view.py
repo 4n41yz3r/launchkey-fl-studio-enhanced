@@ -1,6 +1,6 @@
 from script.actions import SequencerStepEditGroupChangedAction
 from script.commands import ExitStepEditModeCommand
-from script.constants import Pads, SequencerStepEditState
+from script.constants import Pads, SequencerStepEditState, StepEditParameters
 from script.device_independent.util_view.view import View
 from script.fl_constants import RefreshFlags
 
@@ -18,6 +18,7 @@ class SequencerStepToggleView(View):
         self.steps_to_deactivate_on_step_release = set()
         self.current_global_channel = None
         self.current_pattern = None
+        self.last_note = None
 
     def _on_show(self):
         self.steps_to_deactivate_on_step_release = set()
@@ -31,6 +32,8 @@ class SequencerStepToggleView(View):
 
     def _set_sequencer_step_to_active(self, step):
         self.fl.set_step_active(step, True)
+        if (self.last_note is not None):
+            self.fl.set_step_parameter(step, StepEditParameters.Pitch.value.index, self.last_note, updateGraphEditor=True)
         self._focus_steps_in_channelrack()
 
     def _set_sequencer_step_to_inactive(self, step):
@@ -51,6 +54,12 @@ class SequencerStepToggleView(View):
             self.model.sequencer.step_edit_group.edited
             or self.model.sequencer.step_edit_state == SequencerStepEditState.EditLatch
         )
+    
+    def handle_NoteOnAction(self, action):
+        self.last_note = action.note
+    
+    def handle_NoteOffAction(self, action):
+        self.last_note = None
 
     def handle_SequencerStepPressAction(self, action):
         step = action.step

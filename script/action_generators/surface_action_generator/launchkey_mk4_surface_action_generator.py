@@ -7,6 +7,7 @@ from script.action_generators.surface_action_generator.keyboard_controller_commo
     KeyboardControllerCommonPadActionGenerator,
     KeyboardControllerCommonPadLayoutActionGenerator,
     KeyboardControllerCommonPotActionGenerator,
+    KeyboardControllerCommonNoteActionGenerator,
 )
 from script.action_generators.surface_action_generator.surface_actions import (
     EncoderLayoutChangedAction,
@@ -76,6 +77,7 @@ class LaunchkeyMk4SurfaceActionGenerator:
             KeyboardControllerCommonPadActionGenerator(product_defs),
             KeyboardControllerCommonPadLayoutActionGenerator(product_defs),
             KeyboardControllerCommonEncoderLayoutActionGenerator(product_defs),
+            KeyboardControllerCommonNoteActionGenerator()
         ]
 
     def handle_midi_event(self, fl_event):
